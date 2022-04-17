@@ -22,5 +22,6 @@ Default.args = {
   category: 'Liderança',
   author: 'Thomaz Lira Gomes',
   publicationDate: new Date(),
-  timeReading: 10000000
+  timeReading: 10000000,
+  imageUrl: '/img/header.png'
 }
