@@ -19,20 +19,25 @@ const Header = ({
   title
 }: HeaderProps) => (
   <S.Wrapper>
-    <h2>{category}</h2>
-    <h1>{title}</h1>
-    <p>
-      {author} |{' '}
-      {format(publicationDate, 'dd MMM yyyy', {
-        locale: ptBR
-      })}
-    </p>
-    <span>
-      <S.Icon>
-        <ClockIcon />
-      </S.Icon>
-      <p>1h20 de leitura</p>
-    </span>
+    <S.InfoContainer>
+      <h2>{category}</h2>
+      <h1>{title}</h1>
+      <p>
+        {author} &nbsp;&nbsp; | &nbsp;&nbsp;
+        {format(publicationDate, 'dd MMM yyyy', {
+          locale: ptBR
+        })}
+      </p>
+      <span>
+        <S.Icon>
+          <ClockIcon />
+        </S.Icon>
+        <p>1h20 de leitura</p>
+      </span>
+    </S.InfoContainer>
+    <S.ImageContainer>
+      <S.Image src="/img/header.png" />
+    </S.ImageContainer>
   </S.Wrapper>
 )
 

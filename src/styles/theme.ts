@@ -19,6 +19,7 @@ export default {
       large: '1.8rem',
       xlarge: '2.0rem',
       xxlarge: '2.8rem',
+      xxxlarge: '3.5rem',
       huge: '5.2rem'
     }
   },
@@ -27,7 +28,7 @@ export default {
     secondary: '#B987FF',
     mainBg: '#06092B',
     lightBg: '#F2F2F2',
-    white: '#FAFAFA',
+    white: '#FFFFFF',
     black: '#030517',
     lightGray: '#EAEAEA',
     gray: '#8F8F8F',
