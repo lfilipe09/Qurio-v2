@@ -11,16 +11,16 @@ const Base = ({ children }: BaseTemplateProps) => {
   return (
     <S.Wrapper>
       <Container>
-        <Menu />
+        <S.SectionMenu>
+          <Menu />
+        </S.SectionMenu>
       </Container>
 
       <S.Content>{children}</S.Content>
 
-      <S.SectionFooter>
-        <Container>
-          <Footer />
-        </Container>
-      </S.SectionFooter>
+      <Container>
+        <Footer />
+      </Container>
     </S.Wrapper>
   )
 }

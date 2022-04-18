@@ -1,6 +1,22 @@
 import styled, { css } from 'styled-components'
 
-export const Wrapper = styled.main``
+export type WrapperProps = {
+  sticky: boolean
+  stickyHeight: number
+}
+
+const wrapperModifiers = {
+  sticky: (stickyHeight: number) => css`
+    position: fixed;
+    top: ${`${stickyHeight}px`};
+  `
+}
+
+export const Wrapper = styled.main<WrapperProps>`
+  ${({ sticky, stickyHeight }) => css`
+    ${!!sticky && wrapperModifiers.sticky(stickyHeight)}
+  `}
+`
 
 export const Title = styled.p`
   ${({ theme }) => css`
@@ -14,7 +30,7 @@ export type SummaryListProps = {
 
 export const SummaryList = styled.li<SummaryListProps>`
   ${({ theme, isFocused }) => css`
-    background: ${theme.colors.white};
+    /* background: ${theme.colors.white}; */
     max-width: 30rem;
     border-radius: 100%;
     display: flex;
