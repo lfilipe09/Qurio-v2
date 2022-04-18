@@ -1,7 +1,12 @@
+import Button from 'components/Button'
+import ChapterHeader from 'components/ChapterHeader'
 import { Container } from 'components/Container'
+import Footer from 'components/Footer'
 import Header from 'components/Header'
+import { HeartOutlineIcon, SlideIcon } from 'components/Icons'
 import Menu from 'components/Menu'
 import Summary from 'components/Summary'
+import TextBoxInput from 'components/TextBoxInput'
 import TextContent from 'components/TextContent'
 import TextContentMock from 'components/TextContent/mock'
 // import useSticky from 'hooks/useSticky'
@@ -9,14 +14,18 @@ import { useEffect, useRef, useState } from 'react'
 import * as S from './styles'
 
 export type HomeTemplateProps = {
-  banners?: string
+  numberOfChapters?: number
 }
 
-const Home = ({ banners }: HomeTemplateProps) => {
+const Home = ({ numberOfChapters }: HomeTemplateProps) => {
   const [isSticky, setIsSticky] = useState(false)
   const [stickyHeight, setStickyHeight] = useState(0)
+  const [focusedIndex, setFocusedIndex] = useState(0)
   const headerRef = useRef<HTMLBodyElement>(null)
   const summaryRef = useRef<HTMLBodyElement>(null)
+
+  const chaptersRef = useRef<HTMLElement[] | null>(null)
+  chaptersRef.current = Array(numberOfChapters)
 
   // const handleScroll = (e) => {
   //   const bottom =
@@ -31,9 +40,7 @@ const Home = ({ banners }: HomeTemplateProps) => {
 
   useEffect(() => {
     window.onscroll = () => {
-      console.log(window.pageYOffset)
-      console.log(headerRef.current?.clientHeight)
-      console.log(banners)
+      console.log(focusedIndex)
       if (
         headerRef.current &&
         window.pageYOffset > headerRef.current?.clientHeight * 0.7 &&
@@ -45,21 +52,42 @@ const Home = ({ banners }: HomeTemplateProps) => {
             ? summaryRef?.current?.offsetTop - window.pageYOffset
             : 170
         )
+        // chaptersRef?.current?.map(
+        //   (chapter) => window.pageYOffset > chapter.clientHeight
+        // )
       } else if (
         headerRef.current &&
         window.pageYOffset < headerRef.current?.clientHeight * 0.7
       ) {
-        console.log('settei de volta')
         setIsSticky(false)
+      } else {
+        if (chaptersRef?.current) {
+          console.log('Olha o chaptersRef: ', chaptersRef?.current)
+          for (let i = 0; i < chaptersRef.current.length; i++) {
+            if (chaptersRef.current[i]) {
+              console.log(
+                `esse eh o index ${i}`,
+                chaptersRef.current[i].clientHeight
+              )
+              if (
+                chaptersRef.current[i + 1] &&
+                window.pageYOffset > chaptersRef.current[i].clientHeight &&
+                window.pageYOffset < chaptersRef.current[i + 1].clientHeight
+              ) {
+                console.log('considção 1', chaptersRef.current[i].clientHeight)
+                setFocusedIndex(i)
+              } else if (
+                i === chaptersRef.current.length - 1 &&
+                window.pageYOffset > chaptersRef.current[i].clientHeight
+              ) {
+                console.log('considção 2', chaptersRef.current[i].clientHeight)
+                setFocusedIndex(i)
+              }
+            }
+          }
+        }
       }
     }
-    // window.onscroll = () =>
-    //   console.log(
-    //     'olha o window.pageYOffset',
-    //     window.pageYOffset,
-    //     'olha o headerRef.current?.clientHeight',
-    //     headerRef.current?.clientHeight
-    //   )
   })
 
   return (
@@ -85,8 +113,8 @@ const Home = ({ banners }: HomeTemplateProps) => {
             <Summary
               topics={[
                 'Liderança inspiradora',
-                'O futuro do anywhere office',
                 'Liderança remota: 3 fatores para o sucesso de equipes à distância',
+                'O futuro do anywhere office',
                 'Metaverso: por onde começar',
                 'Mindset de crescimento: como identificar agentes da mudança ',
                 'Profissionais T-shaped'
@@ -96,12 +124,50 @@ const Home = ({ banners }: HomeTemplateProps) => {
               stickyHeight={stickyHeight}
             />
           </S.Summary>
+          <div>
+            <TextContent
+              title={TextContentMock.title}
+              content={TextContentMock.content}
+            />
 
-          <TextContent
-            title={TextContentMock.title}
-            content={TextContentMock.content}
-          />
+            <S.ButtonGrid>
+              <Button icon={<HeartOutlineIcon />} outline={true}>
+                curtir capítulo
+              </Button>
+              <div></div>
+              <Button
+                icon={<SlideIcon />}
+                minimal={true}
+                // style={{ justifyContent: 'right' }}
+              >
+                adicionar capítulo ao meu slide
+              </Button>
+            </S.ButtonGrid>
+            <div style={{ padding: '3.2rem' }}>
+              <TextBoxInput
+                label={'Feedback'}
+                placeholder={'Compartilhe aqui o que achou deste capítulo...'}
+              />
+            </div>
+            <S.ChapterContainer ref={(e) => e && chaptersRef.current?.push(e)}>
+              <ChapterHeader
+                title={'Liderança remota:'}
+                numberOfChapter={2}
+                imageUrl={'/img/chapter01.png'}
+                subtitle={'3 fatores para o sucesso de equipes à distância'}
+              />
+            </S.ChapterContainer>
+            <TextContent
+              title={TextContentMock.title}
+              content={TextContentMock.content}
+            />
+          </div>
         </S.BodyGrid>
+      </Container>
+      <Container>
+        <div style={{ marginTop: '10rem' }}>
+          <Footer />
+        </div>
       </Container>
     </>
   )

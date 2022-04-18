@@ -23,7 +23,7 @@ export const Default: Story<ChapterHeaderProps> = (args) => (
 
 Default.args = {
   title: 'Liderança remota:',
-  numberOfChapter: '1',
+  numberOfChapter: 1,
   subtitle: '3 fatores para o sucesso de equipes à distância',
   imageUrl: '/img/chapter01.png'
 }
