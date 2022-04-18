@@ -11,13 +11,22 @@ export const Default: Story<ButtonProps> = (args) => (
   <Button {...args}>{args.children}</Button>
 )
 
+export const Outline: Story<ButtonProps> = (args) => (
+  <Button {...args}>{args.children}</Button>
+)
+
 export const Minimal: Story<ButtonProps> = (args) => (
   <Button {...args}>{args.children}</Button>
 )
 
 Default.args = {
-  icon: <HeartOutlineIcon />,
   minimal: false,
+  children: 'Enviar'
+}
+
+Outline.args = {
+  icon: <HeartOutlineIcon />,
+  outline: true,
   children: 'curtir capitulo'
 }
 

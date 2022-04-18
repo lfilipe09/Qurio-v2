@@ -30,6 +30,7 @@ export default {
     lightBg: '#F2F2F2',
     white: '#FFFFFF',
     black: '#030517',
+    softGray: '#F9F9F9',
     lightGray: '#EAEAEA',
     gray: '#8F8F8F',
     darkGray: '#2E2F42',
