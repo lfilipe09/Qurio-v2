@@ -8,15 +8,21 @@ export default {
 } as Meta
 
 export const Default: Story<ButtonProps> = (args) => (
-  <Button {...args}>{args.children}</Button>
+  <div style={{ maxWidth: '100px' }}>
+    <Button {...args}>{args.children}</Button>
+  </div>
 )
 
 export const Outline: Story<ButtonProps> = (args) => (
-  <Button {...args}>{args.children}</Button>
+  <div style={{ maxWidth: '180px' }}>
+    <Button {...args}>{args.children}</Button>
+  </div>
 )
 
 export const Minimal: Story<ButtonProps> = (args) => (
-  <Button {...args}>{args.children}</Button>
+  <div style={{ maxWidth: '150px' }}>
+    <Button {...args}>{args.children}</Button>
+  </div>
 )
 
 Default.args = {

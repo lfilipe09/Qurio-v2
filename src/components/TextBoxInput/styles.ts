@@ -70,6 +70,9 @@ const ButtonWrapperModifiers = {
 
 export const ButtonWrapper = styled.div<FocusedProps>`
   ${({ theme, isFocused }) => css`
+    div {
+      max-width: 80px;
+    }
     width: 100%;
     padding: 2rem 2rem;
     border-bottom-left-radius: 1rem;

@@ -44,14 +44,16 @@ const TextBoxInput = ({ label, placeholder, onInput }: TextBoxInputProps) => {
           />
           <S.ButtonWrapper isFocused={isFocused}>
             {isFocused && (
-              <Button
-                onClick={() => {
-                  setisSubmitted(true)
-                  onInput?.()
-                }}
-              >
-                Enviar
-              </Button>
+              <div>
+                <Button
+                  onClick={() => {
+                    setisSubmitted(true)
+                    onInput?.()
+                  }}
+                >
+                  Enviar
+                </Button>
+              </div>
             )}
           </S.ButtonWrapper>
         </>

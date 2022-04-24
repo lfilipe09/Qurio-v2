@@ -42,6 +42,8 @@ export const Wrapper = styled.button<WrapperProps>`
     cursor: pointer;
     color: ${theme.colors.white};
     font-weight: ${theme.font.bold};
+    font-family: ${theme.font.family};
+    font-size: ${theme.font.sizes.small};
     border-radius: ${theme.border.radius};
     padding: ${theme.spacings.xxsmall} 1.5rem;
     text-decoration: none;
@@ -50,9 +52,11 @@ export const Wrapper = styled.button<WrapperProps>`
     justify-content: center;
     background-color: ${theme.colors.black};
     border: 0;
+    width: 100%;
     &:hover {
       background: ${darken(0.1, theme.colors.black)};
     }
+
     ${!!hasIcon && wrapperModifiers.withIcon(theme)}
     ${!!minimal && wrapperModifiers.minimal(theme)}
     ${!!outline && wrapperModifiers.outline(theme)}
