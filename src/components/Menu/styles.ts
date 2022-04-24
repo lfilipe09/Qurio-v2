@@ -64,8 +64,7 @@ export const MenuLink = styled.a`
         position: absolute;
         display: block;
         height: 0.2rem;
-        ${media.greaterThan('medium')`background-color: ${theme.colors.white};`}
-        ${media.lessThan('medium')`background-color:${theme.colors.primary};`}
+        background-color: ${theme.colors.primary};
 
         animation: hoverAnimation 0.2s forwards;
       }
@@ -86,8 +85,7 @@ export const MenuLink = styled.a`
 export const MenuLinkDisabled = styled.a`
   ${({ theme }) => css`
     position: relative;
-    ${media.greaterThan('medium')`color: ${theme.colors.white};`}
-    ${media.lessThan('medium')`color:${theme.colors.black};`}
+    color:${theme.colors.black}
     font-size: ${theme.font.sizes.medium};
     margin: 0.3rem ${theme.spacings.small} 0;
     text-decoration: none;
@@ -155,6 +153,25 @@ export const MenuFull = styled.nav<MenuFullProps>`
     }
   `}
 `
+export const MenuWrapper = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    div {
+      align-items: center;
+      p {
+        display: none;
+        ${media.greaterThan('medium')`display: block;`}
+        margin-right: 10px;
+        font-size: ${theme.font.sizes.small};
+        font-weight: ${theme.font.bold};
+      }
+      display: flex;
+    }
+  `}
+`
+
 export const RegisterBox = styled.div`
   ${({ theme }) => css`
     display: flex;
@@ -175,6 +192,11 @@ export const CreateAccount = styled.a`
     color: ${theme.colors.primary};
     border-bottom: 0.2rem solid ${theme.colors.primary};
   `}
+`
+
+export const Logo = styled.img`
+  width: 70px;
+  height: 23px;
 `
 
 export const Image = styled.img`

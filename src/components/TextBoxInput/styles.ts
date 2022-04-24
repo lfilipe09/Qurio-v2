@@ -7,7 +7,7 @@ export const SumbitWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid ${theme.colors.lightGray};
+    border: 1px solid ${theme.colors.black};
     border-radius: 1rem;
     p {
       padding: 3rem 0;
@@ -35,15 +35,17 @@ export const Input = styled.textarea<FocusedProps>`
     font-family: ${theme.font.family};
     padding: 2rem 4rem 7rem 2rem;
     margin-bottom: -10px;
-    background: ${theme.colors.softGray};
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     border: 0;
+    border-top: 1px solid ${theme.colors.black};
+    border-right: 1px solid ${theme.colors.black};
+    border-left: 1px solid ${theme.colors.black};
     outline: none;
     width: 100%;
     &::placeholder {
-      font-weight: ${theme.font.bold};
-      opacity: 40%;
+      font-weight: ${theme.font.light};
+      opacity: 60%;
     }
     ${isFocused && inputModifiers.isFocused(theme)}
   `}
@@ -68,11 +70,13 @@ const ButtonWrapperModifiers = {
 
 export const ButtonWrapper = styled.div<FocusedProps>`
   ${({ theme, isFocused }) => css`
-    background: ${theme.colors.softGray};
     width: 100%;
     padding: 2rem 2rem;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
+    border-bottom: 1px solid ${theme.colors.black};
+    border-right: 1px solid ${theme.colors.black};
+    border-left: 1px solid ${theme.colors.black};
     ${isFocused && ButtonWrapperModifiers.isFocused(theme)}
   `}
 `

@@ -4,8 +4,6 @@ import { Close as CloseIcon } from '@styled-icons/material-outlined/Close'
 
 import * as S from './styles'
 
-import MediaMatch from '../../components/MediaMatch'
-
 // export type MenuProps = {
 //   username?: string | null
 //   loading?: boolean
@@ -17,38 +15,20 @@ const Menu = () => {
 
   return (
     <S.Wrapper>
-      <MediaMatch lessThan="medium">
-        <S.IconWrapper onClick={() => setIsOpen(true)}>
-          <MenuIcon aria-label="Open Menu" />
-        </S.IconWrapper>
-      </MediaMatch>
-
-      <S.LogoWrapper>
-        <a>
-          <S.Image src="/img/logo.png" alt="hsm" />
-        </a>
-      </S.LogoWrapper>
-
-      <MediaMatch greaterThan="medium">
-        <S.MenuNav>
-          <S.MenuLink href="/">Liderança 4.0</S.MenuLink>
-          <S.MenuLinkDisabled>Em breve</S.MenuLinkDisabled>
-        </S.MenuNav>
-      </MediaMatch>
-
+      <S.MenuWrapper>
+        <S.LogoWrapper>
+          <a>
+            <S.Logo src="/img/logo.png" alt="hsm" />
+          </a>
+        </S.LogoWrapper>
+        <div>
+          <p>MENU</p>
+          <S.IconWrapper onClick={() => setIsOpen(true)}>
+            <MenuIcon aria-label="Open Menu" color="black" />
+          </S.IconWrapper>
+        </div>
+      </S.MenuWrapper>
       <>
-        <S.MenuGroup>
-          <MediaMatch greaterThan="medium">
-            <S.Image
-              src="/img/logo-hsm-management-white.png"
-              alt="hsm management"
-            />
-          </MediaMatch>
-          <MediaMatch greaterThan="medium">
-            <S.Image src="/img/logo-hsm-white.png" alt="hsm" />
-          </MediaMatch>
-        </S.MenuGroup>
-
         <S.MenuFull aria-hidden={!isOpen} isOpen={isOpen}>
           <CloseIcon aria-label="Close Menu" onClick={() => setIsOpen(false)} />
           <S.MenuNav>

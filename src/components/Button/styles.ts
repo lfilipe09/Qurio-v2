@@ -19,7 +19,7 @@ const wrapperModifiers = {
   minimal: (theme: DefaultTheme) => css`
     background: none;
     border: 0;
-    color: ${theme.colors.primary};
+    color: ${theme.colors.black};
     font-weight: ${theme.font.light};
     &:hover {
       background: none;
@@ -27,12 +27,12 @@ const wrapperModifiers = {
     }
   `,
   outline: (theme: DefaultTheme) => css`
-    color: ${theme.colors.primary};
-    border: 1px solid ${theme.colors.primary};
+    color: ${theme.colors.black};
+    border: 1px solid ${theme.colors.black};
     font-weight: ${theme.font.light};
     background: none;
     &:hover {
-      background: #efe7fa;
+      background: #f0f0f0;
     }
   `
 }
@@ -48,10 +48,10 @@ export const Wrapper = styled.button<WrapperProps>`
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: ${theme.colors.primary};
+    background-color: ${theme.colors.black};
     border: 0;
     &:hover {
-      background: ${darken(0.1, theme.colors.primary)};
+      background: ${darken(0.1, theme.colors.black)};
     }
     ${!!hasIcon && wrapperModifiers.withIcon(theme)}
     ${!!minimal && wrapperModifiers.minimal(theme)}

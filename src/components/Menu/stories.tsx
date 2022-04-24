@@ -7,7 +7,7 @@ export default {
   layout: 'fullscreen',
   parameters: {
     backgrounds: {
-      default: 'qurio-primary'
+      default: 'qurio-white'
     }
   }
 } as Meta
