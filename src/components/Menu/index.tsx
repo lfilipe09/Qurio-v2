@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Menu2 as MenuIcon } from '@styled-icons/remix-fill/Menu2'
 import { Close as CloseIcon } from '@styled-icons/material-outlined/Close'
 
-import Logo from '../Logo'
 import * as S from './styles'
 
 import MediaMatch from '../../components/MediaMatch'
@@ -26,7 +25,7 @@ const Menu = () => {
 
       <S.LogoWrapper>
         <a>
-          <Logo aria-label="Qurio" />
+          <S.Image src="/img/logo.png" alt="hsm" />
         </a>
       </S.LogoWrapper>
 
