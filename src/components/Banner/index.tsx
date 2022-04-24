@@ -4,11 +4,14 @@ export type BannerProps = {
   img: string
   title: string
   format: string
+  content?: string
+  handleOnClick?: () => void
+  publicationDate?: Date
 }
 
-const Banner = ({ img, title, format }: BannerProps) => (
+const Banner = ({ img, title, format, handleOnClick }: BannerProps) => (
   <>
-    <S.Wrapper>
+    <S.Wrapper onClick={handleOnClick}>
       <S.Ribbon>{format.toUpperCase()}</S.Ribbon>
       <S.ImageWrapper>
         <S.Image src={img} alt={title} />

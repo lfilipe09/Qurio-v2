@@ -4,6 +4,7 @@ import * as S from './styles'
 
 export type BannerSliderProps = {
   items: BannerProps[]
+  handleOnClick?: (index: number) => void
 }
 
 const settings: SliderSettings = {
@@ -25,11 +26,15 @@ const settings: SliderSettings = {
   ]
 }
 
-const BannerSlider = ({ items }: BannerSliderProps) => (
+const BannerSlider = ({ items, handleOnClick }: BannerSliderProps) => (
   <S.Wrapper>
     <SliderMock settings={settings}>
-      {items.map((item) => (
-        <Banner key={item.title} {...item} />
+      {items.map((item, index) => (
+        <Banner
+          key={item.title}
+          {...item}
+          handleOnClick={() => handleOnClick?.(index)}
+        />
       ))}
     </SliderMock>
   </S.Wrapper>

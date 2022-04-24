@@ -7,6 +7,10 @@ export const InfoWrapper = styled.div`
   h1 {
     line-height: 3.7rem;
     margin: 2rem 0;
+    ${media.greaterThan('medium')`
+      font-size: 5rem;
+      line-height: 5rem;
+    `}
   }
 
   div {
