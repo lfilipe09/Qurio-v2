@@ -6,18 +6,17 @@ import {
   CopyIcon,
   HeartOutlineIcon,
   SlideIcon
-} from 'components/Icons'
+} from '../../components/Icons'
 import MediaMatch from 'components/MediaMatch'
 import Menu from 'components/Menu'
 import TextChapterOpener from 'components/TextChapterOpener'
 import TextContent from 'components/TextContent'
 import TextSideColumn from 'components/TextSideColumn'
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import * as S from './styles'
 
 export type HomeTemplateProps = {
   author: string
-  numberOfChapters?: number
   backgroundUrl: string
   publicationDate: Date
   HeaderTitle: string
@@ -25,47 +24,14 @@ export type HomeTemplateProps = {
 }
 
 const Home = ({
-  numberOfChapters,
   author,
   backgroundUrl,
   publicationDate,
   HeaderTitle,
   items
 }: HomeTemplateProps) => {
-  const [isSticky, setIsSticky] = useState(false)
-  const [stickyHeight, setStickyHeight] = useState(0)
   const [contentIndexOpened, setContentIndexOpened] = useState(-1)
-  const headerRef = useRef<HTMLBodyElement>(null)
-  const summaryRef = useRef<HTMLBodyElement>(null)
-
-  const chaptersRef = useRef<HTMLElement[] | null>(null)
-  chaptersRef.current = Array(numberOfChapters)
-
-  useEffect(() => {
-    console.log(stickyHeight)
-    window.onscroll = () => {
-      if (
-        headerRef.current &&
-        window.pageYOffset > headerRef.current?.clientHeight * 0.7 &&
-        isSticky === false
-      ) {
-        setIsSticky(true)
-        setStickyHeight(
-          summaryRef.current
-            ? summaryRef?.current?.offsetTop - window.pageYOffset
-            : 170
-        )
-        // chaptersRef?.current?.map(
-        //   (chapter) => window.pageYOffset > chapter.clientHeight
-        // )
-      } else if (
-        headerRef.current &&
-        window.pageYOffset < headerRef.current?.clientHeight * 0.7
-      ) {
-        setIsSticky(false)
-      }
-    }
-  })
+  const [copiedToClipboard, setCopiedToClipboard] = useState(false)
 
   return (
     <S.Wrapper>
@@ -78,7 +44,7 @@ const Home = ({
           backgroundUrl={backgroundUrl}
           handleOnClick={() => console.log('pass')}
           publicationDate={new Date(publicationDate)}
-          timeReading={30000}
+          timeReading={5000000}
           title={HeaderTitle}
         />
       </S.HeaderWrapper>
@@ -119,22 +85,35 @@ const Home = ({
               />
               <TextContent content={item.content ?? ''} />
             </S.ContentWrapper>
-            <TextSideColumn
-              label={'Feedback'}
-              placeholder={'Compartilhe aqui o que achou deste capitulo...'}
-              onInput={() => console.log('Enviado!')}
-              leftButtonLabel={'curtir'}
-              rightButtonLabel={'copiar referência'}
-              handleOnLeftButtonClick={() => console.log('Clicou na esquerda!')}
-              leftButtonIcon={<HeartOutlineIcon />}
-              rightButtonIcon={<CopyIcon />}
-              handleOnRightButtonClick={() => console.log('Clicou na direita!')}
-              isLeftButtonOutline={true}
-              isRightButtonOutline={true}
-              bottomButtonLabel={'adicionar conteúdo ao meu slide'}
-              bottomButtonIcon={<SlideIcon />}
-              urlLinkBottomButtonClick={'/'}
-            />
+            <S.TextColumnWrapper>
+              <TextSideColumn
+                key={item.title}
+                label={'Feedback'}
+                placeholder={'Compartilhe aqui o que achou deste capitulo...'}
+                onInput={() => console.log('Enviado!')}
+                leftButtonLabel={'curtir'}
+                rightButtonLabel={
+                  copiedToClipboard ? 'link copiado!' : 'copiar referência'
+                }
+                handleOnLeftButtonClick={() =>
+                  console.log('Clicou na esquerda!')
+                }
+                leftButtonIcon={<HeartOutlineIcon />}
+                rightButtonIcon={copiedToClipboard ? null : <CopyIcon />}
+                handleOnRightButtonClick={() => {
+                  navigator.clipboard.writeText(item.reference ?? '')
+                  setCopiedToClipboard(true)
+                  setTimeout(() => {
+                    setCopiedToClipboard(false)
+                  }, 3000)
+                }}
+                isLeftButtonOutline={true}
+                isRightButtonOutline={true}
+                bottomButtonLabel={'adicionar conteúdo ao meu slide'}
+                bottomButtonIcon={<SlideIcon />}
+                urlLinkBottomButtonClick={'/'}
+              />
+            </S.TextColumnWrapper>
           </S.WrapperMenuFull>
         </S.MenuFull>
       ))}

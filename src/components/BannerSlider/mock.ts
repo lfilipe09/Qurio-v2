@@ -8,20 +8,26 @@ export default [
     title: 'Liderança para a nova economia',
     format: 'Video',
     content: TextContentMock01.content,
-    publicationDate: '2022-04-24T15:27:03.044Z'
+    publicationDate: '2022-04-24T15:27:03.044Z',
+    reference:
+      'SOBREMONE, Nome. Tema da revista. Assunto da revista, Local, v. 40, n. 1, p. 85-98, jan./abr. ano. Disponível em: http:www.example.com. Acesso em: 20 jan. 2016.'
   },
   {
     img: '/img/thumb02.png',
     title: 'Mindset de crescimento: como identificar agentes da mudança ',
     format: 'quiz',
     content: TextContentMock02.content,
-    publicationDate: '2022-04-24T15:27:03.044Z'
+    publicationDate: '2022-04-24T15:27:03.044Z',
+    reference:
+      'SOBREMONE, Nome. Tema da revista. Assunto da revista, Local, v. 40, n. 1, p. 85-98, jan./abr. ano. Disponível em: http:www.example.com. Acesso em: 20 jan. 2016.'
   },
   {
     img: '/img/thumb03.png',
     title: 'O futuro do anywhere office',
     format: 'infográfico',
     content: TextContentMock03.content,
-    publicationDate: '2022-04-24T15:27:03.044Z'
+    publicationDate: '2022-04-24T15:27:03.044Z',
+    reference:
+      'SOBREMONE, Nome. Tema da revista. Assunto da revista, Local, v. 40, n. 1, p. 85-98, jan./abr. ano. Disponível em: http:www.example.com. Acesso em: 20 jan. 2016.'
   }
 ]

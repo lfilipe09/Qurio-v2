@@ -59,7 +59,10 @@ export const MenuFull = styled.nav<MenuFullProps>`
     left: 0;
     right: 0;
     height: 100vh;
-    overflow: hidden;
+    overflow-y: scroll;
+    ${media.greaterThan('medium')`
+      overflow: hidden;
+    `}
     transition: opacity 0.3s ease-in-out;
     opacity: ${isOpen ? 1 : 0};
     pointer-events: ${isOpen ? 'all' : 'none'};
@@ -68,11 +71,13 @@ export const MenuFull = styled.nav<MenuFullProps>`
 `
 
 export const WrapperMenuFull = styled.div`
+  max-height: 100vh;
+  ${media.greaterThan('medium')`
   display: grid;
   grid-template-columns: 3fr 1fr;
   grid-gap: 6rem;
-  max-height: 100vh;
   margin-right: 6rem;
+  `}
 `
 
 export const ContentWrapper = styled.div`
@@ -103,13 +108,25 @@ export const ContentWrapper = styled.div`
   `}
 `
 
+export const TextColumnWrapper = styled.div`
+  ${media.lessThan('medium')`
+  padding: 4rem;
+  `}
+`
+
 export const MenuFullClose = styled.div`
   position: relative;
   margin-bottom: 10rem;
+  ${media.lessThan('medium')`
+    background-color: white;
+  `}
 `
 
 export const Icon = styled.button`
   position: absolute;
+  ${media.lessThan('medium')`
+    position: fixed;
+  `}
   cursor: pointer;
   border: 0;
   background-color: transparent;

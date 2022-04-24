@@ -7,6 +7,7 @@ export type BannerProps = {
   content?: string
   handleOnClick?: () => void
   publicationDate?: Date
+  reference?: string
 }
 
 const Banner = ({ img, title, format, handleOnClick }: BannerProps) => (

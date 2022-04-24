@@ -8,7 +8,7 @@ export type TextSideColumnProps = {
   isLeftButtonOutline: boolean
   handleOnLeftButtonClick: () => void
   rightButtonLabel: string
-  rightButtonIcon: JSX.Element
+  rightButtonIcon: JSX.Element | null
   isRightButtonOutline: boolean
   handleOnRightButtonClick: () => void
   bottomButtonLabel: string

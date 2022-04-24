@@ -5,7 +5,7 @@ import * as HeadingStyles from 'components/Heading/styles'
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
-    color: ${theme.colors.white};
+    color: ${theme.colors.black};
     ${media.greaterThan('medium')`
       background: ${theme.colors.white};
       padding: ${theme.spacings.medium};
@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
     h4,
     h5,
     h6 {
-      color: ${theme.colors.white};
+      color: ${theme.colors.black};
       margin: ${theme.spacings.xsmall} 0;
       ${HeadingStyles.wrapperModifiers.lineLeft(theme, 'secondary')};
       ${media.greaterThan('medium')`

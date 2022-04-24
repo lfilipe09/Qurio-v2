@@ -6,7 +6,7 @@ type ButtonTypes =
   | ButtonHTMLAttributes<HTMLButtonElement>
 
 export type ButtonProps = {
-  icon?: JSX.Element
+  icon?: JSX.Element | null
   minimal?: boolean
   outline?: boolean
   as?: React.ElementType
