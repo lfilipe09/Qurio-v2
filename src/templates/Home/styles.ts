@@ -1,49 +1,43 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
+import media from 'styled-media-query'
 
-export const Wrapper = styled.main``
+export const Wrapper = styled.main`
+  ${media.greaterThan('medium')`
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-gap: 2rem;
+    height: 100vh;
+  `}
 
-export const Header = styled.section`
-  ${({ theme }) => css`
-    background-color: ${theme.colors.primary};
+  /* height: 100%; */
+  ${media.lessThan('medium')`
+    display: block;
+    padding: 1rem;
+  `}
+`
+export const HeaderWrapper = styled.div`
+  ${media.greaterThan('medium')`
+    width: 100%;
+    padding: 2rem;
+  `}
+  ${media.lessThan('medium')`
+    height: 50rem;
+    margin-bottom: 1rem;
   `}
 `
 
-export const HeaderTitle = styled.section`
-  padding-bottom: 5rem;
-`
-
-export const BodyGrid = styled.section`
-  display: grid;
-  grid-template-columns: 30rem 1fr;
-  margin-top: 5rem;
-`
-
-export const Summary = styled.section`
-  position: sticky;
-`
-
-export const ButtonGrid = styled.div`
-  padding-left: 3.2rem;
-  display: grid;
-  grid-template-columns: 14rem 1fr 25rem;
-`
-
-export const ChapterContainer = styled.section`
-  ${({ theme }) => css`
-    /* display: grid;
-    padding-left: calc(${theme.grid.gutter} / 2);
-    margin-left: auto; */
-    /* grid-template-columns: 30rem 1fr; */
-    margin: 3.2rem;
-    padding: 3rem;
-    background-color: ${theme.colors.primary};
-    border-radius: 1rem;
+export const BannerSliderWrapper = styled.div`
+  ${media.greaterThan('medium')`
+  display: flex;
+  align-items: end;
   `}
 `
-
-export const ChapterHeaderContainer = styled.div`
-  ${({ theme }) => css`
-    grid-area: 2 / 2;
-    background-color: ${theme.colors.primary};
+export const MenuBannerWrapper = styled.div`
+  ${media.greaterThan('medium')`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  margin-right: 2rem;
   `}
 `

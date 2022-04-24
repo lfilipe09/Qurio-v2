@@ -1,17 +1,17 @@
 export default [
   {
-    img: 'https://source.unsplash.com/user/willianjusten/1042x580',
-    title: 'Defy death 1',
+    img: '/img/thumb01.png',
+    title: 'Liderança para a nova economia',
     format: 'Video'
   },
   {
-    img: 'https://source.unsplash.com/user/willianjusten/1042x582',
-    title: 'Defy death 2',
+    img: '/img/thumb02.png',
+    title: 'Mindset de crescimento: como identificar agentes da mudança ',
     format: 'infográfico'
   },
   {
-    img: 'https://source.unsplash.com/user/willianjusten/1042x581',
-    title: 'Defy death 3',
+    img: '/img/thumb03.png',
+    title: 'O futuro do anywhere office',
     format: 'quiz'
   }
 ]

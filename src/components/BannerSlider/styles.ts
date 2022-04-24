@@ -57,7 +57,7 @@ export const Wrapper = styled.section`
       }
       .slick-list {
         margin-right: 30px;
-        margin-bottom: 30px;
+        /* margin-bottom: 30px; */
       }
       .slick-slide > div {
         margin-bottom: 30px;

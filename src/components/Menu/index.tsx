@@ -33,7 +33,7 @@ const Menu = () => {
           <CloseIcon aria-label="Close Menu" onClick={() => setIsOpen(false)} />
           <S.MenuNav>
             <S.MenuLink href="/">Liderança 4.0</S.MenuLink>
-            <S.MenuLinkDisabled>Em breve</S.MenuLinkDisabled>
+            <S.MenuLinkDisabled>Em breve mais conteúdo</S.MenuLinkDisabled>
           </S.MenuNav>
 
           <S.RegisterBox>

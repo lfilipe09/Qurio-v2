@@ -12,7 +12,7 @@ const settings: SliderSettings = {
   vertical: true,
   verticalSwiping: true,
   infinite: false,
-  slidesToShow: 2.2,
+  slidesToShow: 1.9,
   responsive: [
     {
       breakpoint: 768,

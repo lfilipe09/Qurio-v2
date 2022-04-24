@@ -22,5 +22,6 @@ Default.args = {
   author: 'Thomaz Lira Gomes',
   publicationDate: new Date(),
   timeReading: 10000000,
-  backgroundUrl: '/img/background-image.png'
+  backgroundUrl: '/img/background-image.png',
+  handleOnClick: () => console.log('em breve mais novidades')
 }

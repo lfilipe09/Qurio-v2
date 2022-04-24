@@ -3,6 +3,7 @@ import media from 'styled-media-query'
 
 export const Wrapper = styled.main`
   position: relative;
+  cursor: pointer;
 `
 
 export const ImageWrapper = styled.div`
@@ -57,7 +58,11 @@ export const Subtitle = styled.h3`
 
 export const Image = styled.img`
   width: 100%;
-  height: 40rem;
+  height: 30rem;
+  filter: gray; /* IE6-9 */
+  -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+  filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
+  opacity: 60%;
   object-fit: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -70,6 +75,7 @@ export const Image = styled.img`
 export const Ribbon = styled.div`
   ${({ theme }) => css`
     position: absolute;
+    z-index: 1;
     top: 1.5rem;
     left: 1.5rem;
     background-color: ${theme.colors.green};

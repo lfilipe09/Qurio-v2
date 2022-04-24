@@ -10,6 +10,7 @@ export type HeaderProps = {
   publicationDate: Date
   timeReading: number
   backgroundUrl: string
+  handleOnClick: () => void
 }
 
 const Header = ({
@@ -18,7 +19,8 @@ const Header = ({
   backgroundUrl,
   timeReading,
   title
-}: HeaderProps) => (
+}: // handleOnClick
+HeaderProps) => (
   <S.Wrapper backgroundUrl={backgroundUrl}>
     <S.InfoContainer>
       <S.TitleContainer>
@@ -37,12 +39,14 @@ const Header = ({
         </S.Icon>
         <p>{msToTime(timeReading)} de leitura</p>
       </S.TimeContainer>
-      <S.ArrowWrapper>
+
+      {/* <S.ArrowWrapperLeft onClick={handleOnClick}>
         <S.ArrowButton />
-      </S.ArrowWrapper>
-      <S.ArrowWrapper isLeft={true}>
+      </S.ArrowWrapperLeft>
+
+      <S.ArrowWrapperRight onClick={handleOnClick}>
         <S.ArrowButton />
-      </S.ArrowWrapper>
+      </S.ArrowWrapperRight> */}
     </S.InfoContainer>
   </S.Wrapper>
 )

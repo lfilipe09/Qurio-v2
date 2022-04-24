@@ -7,12 +7,30 @@ export type WrapperProps = {
 
 export const Wrapper = styled.main<WrapperProps>`
   ${({ backgroundUrl }) => css`
+    /* position: relative; */
+    border-radius: 2rem;
     background-image: url(${backgroundUrl});
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
+    ${media.greaterThan('huge')`
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+    animation: animatedBackground 5s;
+
+    /* When the animation is finished, start again */
+    animation-iteration-count: infinite;
+    
+
+    @keyframes animatedBackground  {
+      0% {background-position: 0 -200px;}
+      50% {background-position: -2px -170px;}
+      100% {background-position: 0 -200px;}
+
+    `}
+    
+    }
   `}
 `
 
@@ -23,7 +41,7 @@ export const TitleContainer = styled.div`
     h1 {
       font-weight: ${theme.font.bold};
       ${media.greaterThan('medium')`
-        font-size: ${theme.font.sizes.huge};
+        font-size: 8rem;
         margin: 1rem auto;
         line-height: 7rem;
       `}
@@ -80,7 +98,6 @@ export const TimeContainer = styled.div`
 
 export const InfoContainer = styled.div`
   ${({ theme }) => css`
-    position: relative;
     justify-content: space-between;
     display: flex;
     flex-direction: column;
@@ -107,24 +124,44 @@ export const ArrowButton = styled.button`
   `}
 `
 
-export type ArrowWrapperProps = {
-  isLeft?: boolean
-}
+// export type ArrowWrapperProps = {
+//   isLeft?: boolean
+// }
 
-export const ArrowWrapper = styled.div<ArrowWrapperProps>`
-  ${({ theme, isLeft = false }) => css`
+export const ArrowWrapperRight = styled.button`
+  ${({ theme }) => css`
+    border: 0;
     cursor: pointer;
     position: absolute;
     display: flex;
-    transform: ${isLeft ? 'rotate(270deg)' : 'rotate(90deg)'};
-    right: ${isLeft ? '85px' : '35px'};
+    transform: rotate(90deg);
+    right: 35px;
     bottom: 30px;
     background-color: ${theme.colors.white};
     padding: 14px 14px 18px 14px;
     border-radius: 100%;
     ${media.lessThan('medium')`
     bottom: 5px;
-    right: ${isLeft ? '60px' : '13px'};
+    right: 13px;
+  `}
+  `}
+`
+
+export const ArrowWrapperLeft = styled.button`
+  ${({ theme }) => css`
+    border: 0;
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    transform: rotate(270deg);
+    right: 85px;
+    bottom: 30px;
+    background-color: ${theme.colors.white};
+    padding: 14px 14px 18px 14px;
+    border-radius: 100%;
+    ${media.lessThan('medium')`
+    bottom: 5px;
+    right: 60px;
   `}
   `}
 `
