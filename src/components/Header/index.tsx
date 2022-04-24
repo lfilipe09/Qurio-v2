@@ -6,41 +6,44 @@ import * as S from './styles'
 
 export type HeaderProps = {
   title: string
-  category: string
   author: string
   publicationDate: Date
   timeReading: number
-  imageUrl: string
+  backgroundUrl: string
 }
 
 const Header = ({
   author,
-  category,
   publicationDate,
-  imageUrl,
+  backgroundUrl,
   timeReading,
   title
 }: HeaderProps) => (
-  <S.Wrapper>
+  <S.Wrapper backgroundUrl={backgroundUrl}>
     <S.InfoContainer>
-      <h2>{category}</h2>
-      <h1>{title}</h1>
-      <p>
-        {author} &nbsp;&nbsp; | &nbsp;&nbsp;
-        {format(publicationDate, 'dd MMM yyyy', {
-          locale: ptBR
-        })}
-      </p>
-      <span>
+      <S.TitleContainer>
+        <h1>{title}</h1>
+        <p>
+          {author} &nbsp;&nbsp; | &nbsp;&nbsp;
+          {format(publicationDate, 'dd MMM yyyy', {
+            locale: ptBR
+          })}
+        </p>
+      </S.TitleContainer>
+
+      <S.TimeContainer>
         <S.Icon>
           <ClockIcon />
         </S.Icon>
         <p>{msToTime(timeReading)} de leitura</p>
-      </span>
+      </S.TimeContainer>
+      <S.ArrowWrapper>
+        <S.ArrowButton />
+      </S.ArrowWrapper>
+      <S.ArrowWrapper isLeft={true}>
+        <S.ArrowButton />
+      </S.ArrowWrapper>
     </S.InfoContainer>
-    <S.ImageContainer>
-      <S.Image src={imageUrl} />
-    </S.ImageContainer>
   </S.Wrapper>
 )
 

@@ -6,22 +6,21 @@ export default {
   component: Header,
   parameters: {
     backgrounds: {
-      default: 'qurio-primary'
+      default: 'qurio-light'
     }
   }
 } as Meta
 
 export const Default: Story<HeaderProps> = (args) => (
-  <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+  <div style={{ maxWidth: '685px', height: '691px', margin: '0 auto' }}>
     <Header {...args} />
   </div>
 )
 
 Default.args = {
   title: 'Liderança 4.0',
-  category: 'Liderança',
   author: 'Thomaz Lira Gomes',
   publicationDate: new Date(),
   timeReading: 10000000,
-  imageUrl: '/img/header.png'
+  backgroundUrl: '/img/background-image.png'
 }

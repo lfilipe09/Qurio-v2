@@ -1,28 +1,26 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
-export const Wrapper = styled.main`
-  ${media.greaterThan('medium')`
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    `}
+export type WrapperProps = {
+  backgroundUrl: string
+}
+
+export const Wrapper = styled.main<WrapperProps>`
+  ${({ backgroundUrl }) => css`
+    background-image: url(${backgroundUrl});
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+  `}
 `
 
-export const InfoContainer = styled.div`
+export const TitleContainer = styled.div`
   ${({ theme }) => css`
-    h2 {
-      font-size: ${theme.font.sizes.small};
-      font-weight: ${theme.font.light};
-      color: ${theme.colors.white};
-      background-color: ${theme.colors.secondary};
-      width: fit-content;
-      padding: 5px 10px 5px 10px;
-      border-radius: ${theme.border.radius};
-    }
+    color: ${theme.colors.black};
 
     h1 {
-      color: ${theme.colors.white};
       font-weight: ${theme.font.bold};
       ${media.greaterThan('medium')`
         font-size: ${theme.font.sizes.huge};
@@ -32,20 +30,21 @@ export const InfoContainer = styled.div`
       ${media.lessThan('medium')`
         margin-top: 2rem;
         font-size: ${theme.font.sizes.xxxlarge};
+        line-height: 4rem;
       `}
     }
 
     p {
+      padding-top: 10px;
       font-size: ${theme.font.sizes.medium};
       font-weight: ${theme.font.light};
-      color: ${theme.colors.white};
+      ${media.lessThan('medium')`
+      font-size: ${theme.font.sizes.small};
+  `}
     }
-
-    span {
-      display: flex;
-      margin-top: 2rem;
-      grid-gap: 1rem;
-    }
+    ${media.lessThan('medium')`
+    padding-left: 2rem;
+  `}
   `}
 `
 
@@ -63,5 +62,69 @@ export const Image = styled.img`
     margin: 0 auto;
     margin-top: 2rem;
     width: 30rem;
+  `}
+`
+
+export const TimeContainer = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    grid-gap: 1rem;
+    color: ${theme.colors.black};
+    background-color: ${theme.colors.white};
+    max-width: 175px;
+    padding: 10px;
+    border-top-left-radius: ${theme.border.radius};
+    border-top-right-radius: ${theme.border.radius};
+  `}
+`
+
+export const InfoContainer = styled.div`
+  ${({ theme }) => css`
+    position: relative;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: ${theme.spacings.large} ${theme.spacings.large} 0
+      ${theme.spacings.large};
+    ${media.lessThan('medium')`
+    padding: ${theme.spacings.large} ${theme.spacings.large} 0
+      0 ;
+  `}
+  `}
+`
+
+export const ArrowButton = styled.button`
+  ${({ theme }) => css`
+    cursor: pointer;
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-top: 0;
+    border-bottom: 9px solid ${theme.colors.black};
+    background-color: transparent;
+  `}
+`
+
+export type ArrowWrapperProps = {
+  isLeft?: boolean
+}
+
+export const ArrowWrapper = styled.div<ArrowWrapperProps>`
+  ${({ theme, isLeft = false }) => css`
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    transform: ${isLeft ? 'rotate(270deg)' : 'rotate(90deg)'};
+    right: ${isLeft ? '85px' : '35px'};
+    bottom: 30px;
+    background-color: ${theme.colors.white};
+    padding: 14px 14px 18px 14px;
+    border-radius: 100%;
+    ${media.lessThan('medium')`
+    bottom: 5px;
+    right: ${isLeft ? '60px' : '13px'};
+  `}
   `}
 `
