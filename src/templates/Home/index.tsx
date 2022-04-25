@@ -15,6 +15,8 @@ import TextContent from 'components/TextContent'
 import TextSideColumn from 'components/TextSideColumn'
 import { useState } from 'react'
 import * as S from './styles'
+import QuizBox from 'components/QuizBox'
+import quizItems from '../../components/QuizBox/mock'
 
 export type HomeTemplateProps = {
   author: string
@@ -134,7 +136,12 @@ const Home = ({
                 title={item.title}
                 urlImage={item.img}
               />
-              <TextContent content={item.content ?? ''} />
+              <TextContent
+                content={item.content ?? ''}
+                imgUrlsDesktop={item.imgDesktop}
+                imgUrlsMobile={item.imgMobile}
+                quiz={item.quiz ? <QuizBox items={quizItems} /> : undefined}
+              />
             </S.ContentWrapper>
             <S.TextColumnWrapper>
               <TextSideColumn
@@ -161,11 +168,6 @@ const Home = ({
                       indexChapter === index ? chapterLike + 1 : chapterLike
                   )
                   setNewChaptersLikes(tempChaptersLikes)
-                  console.log('olha o tempChaptersLikes', tempChaptersLikes)
-                  console.log(
-                    'olha o map do tempChaptersLikes',
-                    tempChaptersLikes.map(String)
-                  )
                   updateLikes(tempChaptersLikes.map(String))
                 }}
                 leftButtonIcon={

@@ -9,6 +9,9 @@ export type BannerProps = {
   publicationDate?: Date
   reference?: string
   link?: string
+  imgDesktop?: string[]
+  imgMobile?: string[]
+  quiz?: boolean
 }
 
 const Banner = ({ img, title, format, handleOnClick }: BannerProps) => (

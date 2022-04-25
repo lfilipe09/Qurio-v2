@@ -82,7 +82,10 @@ export const WrapperMenuFull = styled.div`
 
 export const ContentWrapper = styled.div`
   ${({ theme }) => css`
-    padding: 4rem;
+    padding: 9rem;
+    ${media.lessThan('medium')`
+  padding: 2rem;
+  `}
     margin-bottom: 5rem;
     overflow-y: scroll;
     /* width */

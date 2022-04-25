@@ -22,6 +22,7 @@ export const Input = styled.input`
     cursor: pointer;
     &:focus {
       box-shadow: 0 0 0.5rem ${theme.colors.primary};
+      background: ${theme.colors.primary};
     }
     &:before {
       content: '';

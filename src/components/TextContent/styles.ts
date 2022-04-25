@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
     h6 {
       color: ${theme.colors.black};
       margin: ${theme.spacings.xsmall} 0;
-      ${HeadingStyles.wrapperModifiers.lineLeft(theme, 'secondary')};
+      ${HeadingStyles.wrapperModifiers.lineLeft(theme, 'primary')};
       ${media.greaterThan('medium')`
         color: ${theme.colors.black};
       `}
@@ -28,12 +28,15 @@ export const Wrapper = styled.div`
       margin-bottom: ${theme.spacings.xsmall};
     }
     a {
-      color: ${theme.colors.primary};
+      color: ${theme.colors.white};
+      border-radius: ${theme.border.radius};
+      padding: ${theme.spacings.xxsmall} 1.5rem;
+      background-color: ${theme.colors.black};
     }
-    img {
+    /* img {
       max-width: min(70rem, 100%);
       margin-bottom: ${theme.spacings.xsmall};
-    }
+    } */
     ul,
     ol {
       padding: ${theme.spacings.xsmall} ${theme.spacings.small};
@@ -42,4 +45,16 @@ export const Wrapper = styled.div`
       margin: ${theme.spacings.small} 0;
     }
   `}
+`
+
+export const Image = styled.img`
+  max-width: none;
+  width: 100%;
+`
+
+export const QuizWrapper = styled.div`
+  max-width: 60rem;
+  margin: 0 auto;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 `

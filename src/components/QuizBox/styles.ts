@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import media from 'styled-media-query'
 
 export const Wrapper = styled.main`
   ${({ theme }) => css`
@@ -14,6 +15,14 @@ export const Wrapper = styled.main`
     button {
       margin-top: 2rem;
     }
+    ${media.greaterThan('medium')`
+      h3 {
+        margin-bottom: 3rem;
+      }
+      div {
+      margin: 2rem 0;
+    }
+		`}
   `}
 `
 
