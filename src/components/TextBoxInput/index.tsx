@@ -50,9 +50,12 @@ const TextBoxInput = ({ label, placeholder, onInput }: TextBoxInputProps) => {
             {isFocused && (
               <div>
                 <Button
-                  onClick={() => {
+                  onClick={async () => {
                     setisSubmitted(true)
                     onInput?.(textInput)
+                    setTimeout(() => {
+                      setisSubmitted(false)
+                    }, 4000)
                   }}
                 >
                   Enviar

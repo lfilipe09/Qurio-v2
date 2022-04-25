@@ -57,7 +57,7 @@ const Home = ({
           body: JSON.stringify(newChaptersLikes)
         }
       )
-      console.log('sucesso', response)
+      console.log(response)
     } catch (err) {
       console.log('Erro ao atualizar likes', err)
     }
@@ -80,7 +80,7 @@ const Home = ({
           body: JSON.stringify(newPostFeedback)
         }
       )
-      console.log('sucesso', response)
+      console.log(response)
     } catch (err) {
       console.log('Erro ao atualizar likes', err)
     }
@@ -189,7 +189,7 @@ const Home = ({
                 isRightButtonOutline={true}
                 bottomButtonLabel={'adicionar conteúdo ao meu slide'}
                 bottomButtonIcon={<SlideIcon />}
-                urlLinkBottomButtonClick={'/'}
+                urlLinkBottomButtonClick={item.link ?? '/'}
               />
             </S.TextColumnWrapper>
           </S.WrapperMenuFull>
