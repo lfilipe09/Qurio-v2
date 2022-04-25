@@ -5,11 +5,12 @@ import * as S from './styles'
 export type TextBoxInputProps = {
   label: string
   placeholder: string
-  onInput?: () => void
+  onInput?: (value: string) => void
 }
 
 const TextBoxInput = ({ label, placeholder, onInput }: TextBoxInputProps) => {
   const [isFocused, setisFocused] = useState(false)
+  const [textInput, setTextInput] = useState('')
   const [isSubmitted, setisSubmitted] = useState(false)
   const ref = useRef<HTMLInputElement>(null)
 
@@ -40,6 +41,9 @@ const TextBoxInput = ({ label, placeholder, onInput }: TextBoxInputProps) => {
           <S.Input
             isFocused={isFocused}
             onFocus={() => setisFocused(true)}
+            onChange={({ currentTarget: { value } }) => {
+              setTextInput(value)
+            }}
             placeholder={placeholder}
           />
           <S.ButtonWrapper isFocused={isFocused}>
@@ -48,7 +52,7 @@ const TextBoxInput = ({ label, placeholder, onInput }: TextBoxInputProps) => {
                 <Button
                   onClick={() => {
                     setisSubmitted(true)
-                    onInput?.()
+                    onInput?.(textInput)
                   }}
                 >
                   Enviar

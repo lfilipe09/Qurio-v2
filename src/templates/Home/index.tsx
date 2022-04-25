@@ -4,6 +4,7 @@ import Header from 'components/Header'
 import {
   CloseIcon,
   CopyIcon,
+  HeartFilledIcon,
   HeartOutlineIcon,
   SlideIcon
 } from '../../components/Icons'
@@ -21,6 +22,7 @@ export type HomeTemplateProps = {
   publicationDate: Date
   HeaderTitle: string
   items: BannerProps[]
+  chaptersLikes: string[]
 }
 
 const Home = ({
@@ -28,10 +30,61 @@ const Home = ({
   backgroundUrl,
   publicationDate,
   HeaderTitle,
-  items
+  items,
+  chaptersLikes
 }: HomeTemplateProps) => {
   const [contentIndexOpened, setContentIndexOpened] = useState(-1)
   const [copiedToClipboard, setCopiedToClipboard] = useState(false)
+  const [likeButtonClickedIndex, setLikeButtonClickedIndex] = useState<
+    number[]
+  >([])
+  const [newChaptersLikes, setNewChaptersLikes] = useState<number[]>(
+    chaptersLikes.map(Number)
+  )
+  // const [feedbackData, setFeedbackDate] = useState(['.', '.', '.'])
+
+  const updateLikes = async (value: string[]) => {
+    try {
+      const newChaptersLikes = {
+        chapterOneLikes: value[0].toString(),
+        chapterTwoLikes: value[1].toString(),
+        chapterThreeLikes: value[2].toString()
+      }
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/update-like-amount`,
+        {
+          method: 'POST',
+          body: JSON.stringify(newChaptersLikes)
+        }
+      )
+      console.log('sucesso', response)
+    } catch (err) {
+      console.log('Erro ao atualizar likes', err)
+    }
+  }
+
+  const postFeedback = async (value: string[]) => {
+    try {
+      const newPostFeedback = {
+        qurio_chapter_1_feedback: value[0].toString(),
+        qurio_chapter_1_likes: '.',
+        qurio_chapter_2_feedback: value[1].toString(),
+        qurio_chapter_2_likes: '.',
+        qurio_chapter_3_feedback: value[2].toString(),
+        qurio_chapter_3_likes: '.'
+      }
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/post-feedback`,
+        {
+          method: 'POST',
+          body: JSON.stringify(newPostFeedback)
+        }
+      )
+      console.log('sucesso', response)
+    } catch (err) {
+      console.log('Erro ao atualizar likes', err)
+    }
+  }
 
   return (
     <S.Wrapper>
@@ -56,8 +109,6 @@ const Home = ({
           <BannerSlider
             items={items}
             handleOnClick={(index) => {
-              console.log('clicou!!')
-              console.log('olha o index:', index)
               setContentIndexOpened(index)
             }}
           />
@@ -90,15 +141,40 @@ const Home = ({
                 key={item.title}
                 label={'Feedback'}
                 placeholder={'Compartilhe aqui o que achou deste capitulo...'}
-                onInput={() => console.log('Enviado!')}
-                leftButtonLabel={'curtir'}
+                onInput={(value) => {
+                  const feedbackData = ['.', '.', '.']
+                  feedbackData[index] = value
+                  postFeedback(feedbackData)
+                }}
+                leftButtonLabel={
+                  likeButtonClickedIndex.includes(index)
+                    ? (Number(chaptersLikes[index]) + 1).toString()
+                    : 'curtir'
+                }
                 rightButtonLabel={
                   copiedToClipboard ? 'link copiado!' : 'copiar referência'
                 }
-                handleOnLeftButtonClick={() =>
-                  console.log('Clicou na esquerda!')
+                handleOnLeftButtonClick={() => {
+                  setLikeButtonClickedIndex([...likeButtonClickedIndex, index])
+                  const tempChaptersLikes = newChaptersLikes.map(
+                    (chapterLike, indexChapter) =>
+                      indexChapter === index ? chapterLike + 1 : chapterLike
+                  )
+                  setNewChaptersLikes(tempChaptersLikes)
+                  console.log('olha o tempChaptersLikes', tempChaptersLikes)
+                  console.log(
+                    'olha o map do tempChaptersLikes',
+                    tempChaptersLikes.map(String)
+                  )
+                  updateLikes(tempChaptersLikes.map(String))
+                }}
+                leftButtonIcon={
+                  likeButtonClickedIndex.includes(index) ? (
+                    <HeartFilledIcon />
+                  ) : (
+                    <HeartOutlineIcon />
+                  )
                 }
-                leftButtonIcon={<HeartOutlineIcon />}
                 rightButtonIcon={copiedToClipboard ? null : <CopyIcon />}
                 handleOnRightButtonClick={() => {
                   navigator.clipboard.writeText(item.reference ?? '')
@@ -107,7 +183,9 @@ const Home = ({
                     setCopiedToClipboard(false)
                   }, 3000)
                 }}
-                isLeftButtonOutline={true}
+                isLeftButtonOutline={
+                  likeButtonClickedIndex.includes(index) ? false : true
+                }
                 isRightButtonOutline={true}
                 bottomButtonLabel={'adicionar conteúdo ao meu slide'}
                 bottomButtonIcon={<SlideIcon />}
