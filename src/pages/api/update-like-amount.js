@@ -1,13 +1,14 @@
 import { GoogleSpreadsheet } from 'google-spreadsheet'
-import credentials from '../../../credentials.json'
+import { fromBase64 } from '../../utils/base64'
 
-const doc = new GoogleSpreadsheet(
-  '1dn-7d97-zVk3hv1mz7ntl7A1kGfkR3PXHazHLGU06GI'
-)
+const doc = new GoogleSpreadsheet(process.env.SHEET_DOC_ID)
 
 export default async (req, res) => {
   try {
-    await doc.useServiceAccountAuth(credentials)
+    await doc.useServiceAccountAuth({
+      client_email: process.env.SHEET_CLIENT_EMAIL,
+      private_key: fromBase64(process.env.SHEET_PRIVATE_KEY)
+    })
     await doc.loadInfo()
 
     const sheet = doc.sheetsById[0]
@@ -17,9 +18,6 @@ export default async (req, res) => {
     const chapterTwoLikes = sheet.getCell(1, 3)
     const chapterThreeLikes = sheet.getCell(1, 5)
     req.body = JSON.parse(req.body)
-    console.log('aqui o req: ', req)
-    console.log('aqui o req.body: ', req.body)
-    console.log('aqui o req.body.chapterOneLikes: ', req.body.chapterOneLikes)
 
     chapterOneLikes.value = req.body.chapterOneLikes
 
@@ -28,20 +26,7 @@ export default async (req, res) => {
     chapterThreeLikes.value = req.body.chapterThreeLikes
 
     await sheet.saveUpdatedCells()
-    res.end(
-      JSON.stringify({
-        chapterOneLikes: chapterOneLikes.value,
-        chapterTwoLikes: chapterTwoLikes.value,
-        chapterThreeLikes: chapterThreeLikes.value
-      })
-    )
   } catch (err) {
-    res.end(
-      JSON.stringify({
-        chapterOneLikes: null,
-        chapterTwoLikes: null,
-        chapterThreeLikes: null
-      })
-    )
+    res.status(413).send(err)
   }
 }

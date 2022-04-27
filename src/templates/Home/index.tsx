@@ -165,7 +165,9 @@ const Home = ({
                   setLikeButtonClickedIndex([...likeButtonClickedIndex, index])
                   const tempChaptersLikes = newChaptersLikes.map(
                     (chapterLike, indexChapter) =>
-                      indexChapter === index ? chapterLike + 1 : chapterLike
+                      indexChapter === index
+                        ? Number(chapterLike) + 1
+                        : Number(chapterLike)
                   )
                   setNewChaptersLikes(tempChaptersLikes)
                   updateLikes(tempChaptersLikes.map(String))
