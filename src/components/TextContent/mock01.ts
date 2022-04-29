@@ -17,7 +17,7 @@ Descentralização, agilidade e digitalização: esses são os princípios da no
 
 
 <hr />
-<a = href="https://experience.hsm.com.br/posts/hsm-expo-21-diego-barreto" target="_blank">
+<a href="https://experience.hsm.com.br/posts/hsm-expo-21-diego-barreto" target="_blank">
   Acesse aqui o video </a>
 </p>`
 }
