@@ -15,7 +15,7 @@ export default [
     imgDesktop: ['/img/content-01-desktop.png'],
     imgMobile: ['/img/content-01-mobile.png'],
     quiz: false,
-    buttonUrl: ''
+    buttonUrl: 'https://bit.ly/3MHlr4u'
   },
   {
     img: '/img/thumb02.png',
@@ -29,7 +29,7 @@ export default [
     imgDesktop: ['/img/content-02-desktop.png'],
     imgMobile: ['/img/content-02-mobile.png'],
     quiz: true,
-    buttonUrl: ''
+    buttonUrl: 'https://bit.ly/3s1jXdv'
   },
   {
     img: '/img/thumb03.png',
@@ -51,7 +51,6 @@ export default [
       '/img/content-03.3-mobile.png'
     ],
     quiz: false,
-    buttonUrl:
-      'https://drive.google.com/file/d/13cobUZt5zEeEqcXLqTkkcVP-qCylgqn_/view?usp=sharing'
+    buttonUrl: 'https://bit.ly/3s2NELw'
   }
 ]

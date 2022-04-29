@@ -14,12 +14,7 @@ Descentralização, agilidade e digitalização: esses são os princípios da no
 <br />
   <h4>PENSAMENTO SISTÊMICO</h4>
   Inovação e estratégia não são parte de um manual: são resultados de leitura de contextos. As lideranças são pressionadas a repensar práticas e estratégias por causa das mudanças de contexto dentro e fora das organizações. A adoção de modelos ágeis e a descentralização de dinâmicas de poder são as ferramentas que permitem essa adaptação no tempo certo. 
-
-
-<hr />
-<a href="https://experience.hsm.com.br/posts/hsm-expo-21-diego-barreto" target="_blank">
-  Acesse aqui o video </a>
-</p>`
+`
 }
 
 export default TextContentMock01
