@@ -1,10 +1,10 @@
-import { TextContentProps } from '.'
+import { TextContentProps } from 'components/TextContent'
 
 const TextContentMock02: TextContentProps = {
   title: 'Mindset de crescimento: como identificar agentes da mudança',
   content: `
 <p>
-Imortalizado no livro homônimo da psicóloga americana Carol Dweck, o conceito de Mindset de Crescimento se tornou uma referência global entre pesquisadores e estudiosos de cultura organizacional. Em 2014, o executivo Zia Zauman, hoje à frente da estratégia de growth da Microsoft na Ásia, traduziu a teoria em quatro arquétipos profissionais, que continuam sendo essenciais para identificar agentes da transformação dentro de uma empresa. 
+Imortalizado no livro homônimo da psicóloga americana Carol Dweck, o conceito de Mindset de Crescimento se tornou uma referência global entre pesquisadores e estudiosos de cultura organizacional. Em 2014, o executivo Zia Zauman, hoje à frente da estratégia de growth da Microsoft na Ásia, traduziu a teoria em quatro arquétipos profissionais, que continuam sendo essenciais para identificar agentes da transformação dentro de uma empresa.
 <br />
 </p>
 <h2>Os 4 arquétipos-chave do mindset de crescimento</h2>
@@ -22,7 +22,7 @@ validar pessoas e ser validados por elas. São conectores, têm projetos em site
   São fazedores experimentais que reconhecem a incerteza estratégica e
   adaptam-se a ela, além de ajudar a guiar os outros. Têm experiências empreendedoras,
   desaprendem com facilidade, já pivotaram negócios e dão saltos de carreira. Amam
-  receber mentoria Exemplo: Serena Williams  
+  receber mentoria Exemplo: Serena Williams
 
 
 <hr />

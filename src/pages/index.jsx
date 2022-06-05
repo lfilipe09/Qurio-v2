@@ -1,5 +1,5 @@
 import Home from 'templates/Home'
-import bannerItems from '../components/BannerSlider/mock'
+import bannerItems from '../components/BannerSlider/mocks/lideranca/mock-lideranca-01'
 import useSWR from 'swr'
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
@@ -13,7 +13,8 @@ export default function Index() {
     HeaderTitle: 'Liderança 4.0',
     author: 'Qurio powered by HSM',
     publicationDate: '2022-04-24T15:27:03.044Z',
-    backgroundUrl: '/img/background-image.png',
+    backgroundUrl:
+      '/img/packs/lideranca/01/background-image-lideranca-parte01.jpg',
     items: bannerItems,
     chaptersLikes: [
       data.chapterOneLikes,

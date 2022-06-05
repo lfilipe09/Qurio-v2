@@ -35,7 +35,7 @@ export const Title = styled.h2`
     font-weight: ${theme.font.light};
     color: ${theme.colors.black};
     ${media.greaterThan('medium')`
-      font-size: ${theme.font.sizes.xlarge};
+      font-size: ${theme.font.sizes.medium};
     `}
   `}
 `
@@ -59,10 +59,6 @@ export const Subtitle = styled.h3`
 export const Image = styled.img`
   width: 100%;
   height: 30rem;
-  filter: gray; /* IE6-9 */
-  -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
-  filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
-  opacity: 60%;
   object-fit: cover;
   background-position: center center;
   background-repeat: no-repeat;
