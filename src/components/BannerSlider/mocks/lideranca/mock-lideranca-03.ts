@@ -39,14 +39,12 @@ export default [
       'HSM Management#151. Abril, 2022. Sua organização está na mira da Great Resignation; Página 12',
     link: 'https://docs.google.com/presentation/d/1og5zGLKzuqxYo9-vLkHC1tDB_Aw_WZYWsn0qeCM4wMc/edit?usp=sharing',
     imgDesktop: [
-      '/img/packs/lideranca/03/lideranca-parte03-content-02.1-desktop.jpg',
-      '/img/packs/lideranca/03/lideranca-parte03-content-02.2-desktop.jpg',
-      '/img/packs/lideranca/03/lideranca-parte03-content-02.3-desktop.jpg'
+      '/img/packs/lideranca/03/lideranca-parte03-content-03.1-desktop.jpg',
+      '/img/packs/lideranca/03/lideranca-parte03-content-03.2-desktop.jpg'
     ],
     imgMobile: [
-      '/img/packs/lideranca/03/lideranca-parte03-content-02.1-mobile.jpg',
-      '/img/packs/lideranca/03/lideranca-parte03-content-02.2-mobile.jpg',
-      '/img/packs/lideranca/03/lideranca-parte03-content-02.3-mobile.jpg'
+      '/img/packs/lideranca/03/lideranca-parte03-content-03.1-mobile.jpg',
+      '/img/packs/lideranca/03/lideranca-parte03-content-03.2-mobile.jpg'
     ],
     quiz: false
   },
@@ -60,12 +58,14 @@ export default [
       'HSM e WeWork. Pesquisa Redefinindo Modelos de Trabalho na América Latina - Março, 2022. Páginas 4-8.',
     link: 'https://docs.google.com/presentation/d/16yMh7frfjto4xdRMr4opLc9kJK5NtRMBss0g7HBYNOY/edit?usp=sharing',
     imgDesktop: [
-      '/img/packs/lideranca/03/lideranca-parte03-content-03.1-desktop.jpg',
-      '/img/packs/lideranca/03/lideranca-parte03-content-03.2-desktop.jpg'
+      '/img/packs/lideranca/03/lideranca-parte03-content-02.1-desktop.jpg',
+      '/img/packs/lideranca/03/lideranca-parte03-content-02.2-desktop.jpg',
+      '/img/packs/lideranca/03/lideranca-parte03-content-02.3-desktop.jpg'
     ],
     imgMobile: [
-      '/img/packs/lideranca/03/lideranca-parte03-content-03.1-mobile.jpg',
-      '/img/packs/lideranca/03/lideranca-parte03-content-03.2-mobile.jpg'
+      '/img/packs/lideranca/03/lideranca-parte03-content-02.1-mobile.jpg',
+      '/img/packs/lideranca/03/lideranca-parte03-content-02.2-mobile.jpg',
+      '/img/packs/lideranca/03/lideranca-parte03-content-02.3-mobile.jpg'
     ],
     quiz: false
   }
