@@ -46,7 +46,9 @@ export default [
       '/img/packs/lideranca/03/lideranca-parte03-content-03.1-mobile.jpg',
       '/img/packs/lideranca/03/lideranca-parte03-content-03.2-mobile.jpg'
     ],
-    quiz: false
+    quiz: false,
+    buttonUrl:
+      'https://www.revistahsm.com.br/post/sua-organizacao-esta-na-mira-da-great-resignation?gclid=CjwKCAjwquWVBhBrEiwAt1Kmwn57JDguoWiO7feZQjnBVNQ44j2s1ZTpzeOh--XbDgWontl3XdZw4xoC2T0QAvD_BwE'
   },
   {
     img: '/img/packs/lideranca/03/lideranca-parte03-thumb03.png',
@@ -55,7 +57,7 @@ export default [
     content: TextContentMock03.content,
     publicationDate: '2022-04-24T15:27:03.044Z',
     reference:
-      'HSM e WeWork. Pesquisa Redefinindo Modelos de Trabalho na América Latina - Março, 2022. Páginas 4-8.',
+      'HSM Management#147. 2021. Seu repertório é elástico - Página 56',
     link: 'https://docs.google.com/presentation/d/16yMh7frfjto4xdRMr4opLc9kJK5NtRMBss0g7HBYNOY/edit?usp=sharing',
     imgDesktop: [
       '/img/packs/lideranca/03/lideranca-parte03-content-02.1-desktop.jpg',
@@ -67,6 +69,7 @@ export default [
       '/img/packs/lideranca/03/lideranca-parte03-content-02.2-mobile.jpg',
       '/img/packs/lideranca/03/lideranca-parte03-content-02.3-mobile.jpg'
     ],
-    quiz: false
+    quizPoint: true,
+    buttonUrl: 'https://www.revistahsm.com.br/post/seu-repertorio-e-elastico'
   }
 ]

@@ -17,6 +17,8 @@ import { useState } from 'react'
 import * as S from './styles'
 import QuizBox from 'components/QuizBox'
 import quizItems from '../../components/QuizBox/mock'
+import quizPointItems from '../../components/QuizPoint/mock'
+import QuizPoint from 'components/QuizPoint'
 
 export type HomeTemplateProps = {
   author: string
@@ -141,6 +143,11 @@ const Home = ({
                 imgUrlsDesktop={item.imgDesktop}
                 imgUrlsMobile={item.imgMobile}
                 quiz={item.quiz ? <QuizBox items={quizItems} /> : undefined}
+                quizPoint={
+                  item.quizPoint ? (
+                    <QuizPoint items={quizPointItems} />
+                  ) : undefined
+                }
                 buttonUrl={item.buttonUrl === '' ? undefined : item.buttonUrl}
               />
             </S.ContentWrapper>

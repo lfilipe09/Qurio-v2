@@ -8,6 +8,7 @@ export type TextContentProps = {
   imgUrlsDesktop?: string[]
   imgUrlsMobile?: string[]
   quiz?: JSX.Element
+  quizPoint?: JSX.Element
   buttonUrl?: string
 }
 
@@ -17,6 +18,7 @@ const TextContent = ({
   imgUrlsDesktop,
   imgUrlsMobile,
   quiz,
+  quizPoint,
   buttonUrl
 }: TextContentProps) => (
   <S.Wrapper data-cy="content">
@@ -29,6 +31,8 @@ const TextContent = ({
     <div dangerouslySetInnerHTML={{ __html: content }} />
 
     {!!quiz && <S.QuizWrapper>{quiz}</S.QuizWrapper>}
+
+    {!!quizPoint && <S.QuizWrapper>{quizPoint}</S.QuizWrapper>}
 
     {!!imgUrlsDesktop && (
       <MediaMatch greaterThan="medium">

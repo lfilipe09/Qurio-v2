@@ -12,6 +12,7 @@ export type BannerProps = {
   imgDesktop?: string[]
   imgMobile?: string[]
   quiz?: boolean
+  quizPoint?: boolean
   buttonUrl?: string
 }
 
