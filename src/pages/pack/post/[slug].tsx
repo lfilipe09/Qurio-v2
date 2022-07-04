@@ -106,12 +106,12 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       content.images_display.map((image_display) =>
         contents.push({
           desktop: {
-            url: `${image_display.desktop.data.attributes.url}`,
+            url: image_display.desktop.data.attributes.url,
             alternativeText:
               image_display.desktop.data.attributes.alternativeText
           },
           mobile: {
-            url: `${image_display.mobile.data.attributes.url}`,
+            url: image_display.mobile.data.attributes.url,
             alternativeText:
               image_display.mobile.data.attributes.alternativeText
           }
@@ -128,7 +128,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       ),
       category: post.category.data.attributes.name,
       createdAt: post.createdAt,
-      imageUrl: `${post.cover.data.attributes.url}`,
+      imageUrl: post.cover.data.attributes.url,
       reference: post.reference,
       slideUrl: post.slide_url,
       originUrl: post.origin_url,
