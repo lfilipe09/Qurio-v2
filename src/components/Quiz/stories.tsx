@@ -1,18 +1,16 @@
 import { Story, Meta } from '@storybook/react'
-import QuizBox, { QuizBoxProps } from '.'
-import QuizItems from './mock'
+import { QuizProps } from 'types/api'
+import Quiz from '.'
 
 export default {
   title: 'QuizBox',
-  component: QuizBox
+  component: Quiz
 } as Meta
 
-export const Default: Story<QuizBoxProps> = (args) => (
+export const Default: Story<QuizProps> = (args) => (
   <div style={{ maxWidth: '400px', margin: '0 auto' }}>
-    <QuizBox {...args} />
+    <Quiz {...args} />
   </div>
 )
 
-Default.args = {
-  items: QuizItems
-}
+Default.args = {}

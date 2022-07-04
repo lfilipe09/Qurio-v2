@@ -1,12 +1,10 @@
 import { Story, Meta } from '@storybook/react/types-6-0'
 import BannerSlider, { BannerSliderProps } from '.'
 
-import items from './mocks/gestao-emocional/mock-gestao-emocional-01'
-
 export default {
   title: 'BannerSlider',
   component: BannerSlider,
-  args: { items },
+  args: {},
   parameters: {
     layout: 'fullscreen',
     backgrounds: {

@@ -19,9 +19,8 @@ export const Default: Story<HeaderProps> = (args) => (
 
 Default.args = {
   title: 'Liderança 4.0',
-  author: 'Thomaz Lira Gomes',
+  authors: ['Thomaz Lira Gomes'],
   publicationDate: new Date(),
-  timeReading: 10000000,
   backgroundUrl: '/img/background-image.png',
   handleOnClick: () => console.log('em breve mais novidades')
 }

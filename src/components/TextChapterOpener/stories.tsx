@@ -14,8 +14,7 @@ export const Default: Story<TextChapterOpenerProps> = (args) => (
 
 Default.args = {
   title: 'Liderança inspiradora: as novas regras da gestão de pessoas',
-  author: 'Thomaz Lira Gomes',
-  numberOfChapter: 1,
+  authors: ['Thomaz Lira Gomes'],
   publicationDate: new Date(),
   urlImage: '/img/thumb01.png'
 }
