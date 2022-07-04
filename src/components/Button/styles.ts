@@ -52,7 +52,7 @@ export const Wrapper = styled.button<WrapperProps>`
     justify-content: center;
     background-color: ${theme.colors.black};
     border: 0;
-    width: 100%;
+    width: max-content;
     &:hover {
       background: ${darken(0.1, theme.colors.black)};
     }

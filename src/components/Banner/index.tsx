@@ -1,27 +1,20 @@
+import { PostThumbProps } from 'types/api'
 import * as S from './styles'
 
 export type BannerProps = {
-  img: string
-  title: string
-  format: string
-  content?: string
   handleOnClick?: () => void
-  publicationDate?: Date
-  reference?: string
-  link?: string
-  imgDesktop?: string[]
-  imgMobile?: string[]
-  quiz?: boolean
-  quizPoint?: boolean
-  buttonUrl?: string
-}
+} & PostThumbProps
 
-const Banner = ({ img, title, format, handleOnClick }: BannerProps) => (
+const Banner = ({ imageUrl, title, formats, handleOnClick }: BannerProps) => (
   <>
     <S.Wrapper onClick={handleOnClick}>
-      <S.Ribbon>{format.toUpperCase()}</S.Ribbon>
+      <S.RibbonWrapper>
+        {formats.map((format, index) => (
+          <S.Ribbon key={format + index}>{format.toUpperCase()}</S.Ribbon>
+        ))}
+      </S.RibbonWrapper>
       <S.ImageWrapper>
-        <S.Image src={img} alt={title} />
+        <S.Image src={imageUrl} alt={title} />
       </S.ImageWrapper>
       <S.TitleWrapper>
         <S.Title>{title}</S.Title>

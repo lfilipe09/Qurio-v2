@@ -1,9 +1,47 @@
 import styled, { css } from 'styled-components'
-import { RadioProps } from '.'
+import media from 'styled-media-query'
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.main`
+  ${({ theme }) => css`
+    padding: 4rem;
+    border: 1px solid ${theme.colors.black};
+    h3 {
+      margin: 1rem 0;
+      margin-bottom: 2rem;
+    }
+    div {
+      margin: 1rem 0;
+    }
+    button {
+      margin-top: 2rem;
+    }
+    ${media.greaterThan('medium')`
+      h3 {
+        margin-bottom: 3rem;
+      }
+      div {
+      margin: 2rem 0;
+    }
+		`}
+  `}
+`
+
+export type ItemWrapperProps = {
+  isHidden: boolean
+}
+
+export const ItemWrapper = styled.form<ItemWrapperProps>`
+  ${({ isHidden }) => css`
+    display: ${isHidden ? 'none' : 'block'};
+  `}
+`
+
+export const Header = styled.div`
+  margin: 2rem;
+  margin-left: 0;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  grid-gap: 0.5rem;
 `
 
 export const Input = styled.input`
@@ -14,7 +52,6 @@ export const Input = styled.input`
     appearance: none;
     width: 1.8rem;
     height: 1.8rem;
-    min-width: 1.8rem;
     border: 0.2rem solid ${theme.colors.primary};
     border-radius: 50%;
     background: transparent;
@@ -42,11 +79,14 @@ export const Input = styled.input`
   `}
 `
 
-export const Label = styled.label<Pick<RadioProps, 'labelColor'>>`
-  ${({ theme, labelColor }) => css`
+export const Label = styled.label`
+  ${({ theme }) => css`
     padding-left: ${theme.spacings.xxsmall};
-    color: ${theme.colors[labelColor!]};
+    color: ${theme.colors.black};
     line-height: 1;
     cursor: pointer;
   `}
 `
+export const TitleResult = styled.h4``
+
+export const DescriptionResult = styled.p``

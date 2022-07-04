@@ -1,25 +1,18 @@
 import Button from 'components/Button'
-import TextBoxInput, { TextBoxInputProps } from 'components/TextBoxInput'
 import * as S from './styles'
 
 export type TextSideColumnProps = {
-  leftButtonLabel: string
-  leftButtonIcon: JSX.Element
-  isLeftButtonOutline: boolean
-  handleOnLeftButtonClick: () => void
-  rightButtonLabel: string
-  rightButtonIcon: JSX.Element | null
-  isRightButtonOutline: boolean
-  handleOnRightButtonClick: () => void
-  bottomButtonLabel: string
-  bottomButtonIcon: JSX.Element
-  urlLinkBottomButtonClick: string
-} & TextBoxInputProps
+  leftButtonLabel?: string
+  leftButtonIcon?: JSX.Element | null
+  isLeftButtonOutline?: boolean
+  handleOnLeftButtonClick?: () => void
+  rightButtonLabel?: string
+  rightButtonIcon?: JSX.Element | null
+  handleOnRightButtonClick?: () => void
+  urlLinkRightButtonClick?: string
+}
 
 const TextSideColumn = ({
-  label: textBoxLabel,
-  placeholder: textBoxPlaceholder,
-  onInput: textBoxOnInput,
   leftButtonLabel,
   rightButtonLabel,
   handleOnLeftButtonClick,
@@ -27,17 +20,9 @@ const TextSideColumn = ({
   rightButtonIcon,
   handleOnRightButtonClick,
   isLeftButtonOutline = true,
-  isRightButtonOutline = true,
-  bottomButtonLabel,
-  bottomButtonIcon,
-  urlLinkBottomButtonClick
+  urlLinkRightButtonClick
 }: TextSideColumnProps) => (
   <S.Wrapper>
-    <TextBoxInput
-      label={textBoxLabel}
-      placeholder={textBoxPlaceholder}
-      onInput={textBoxOnInput}
-    />
     <S.ButtonsWrapper>
       <S.ButtonsTopWrapper>
         <Button
@@ -49,21 +34,15 @@ const TextSideColumn = ({
         </Button>
         <Button
           icon={rightButtonIcon}
-          outline={isRightButtonOutline}
+          outline={true}
+          as={'a'}
+          href={urlLinkRightButtonClick}
+          target={'_blank'}
           onClick={handleOnRightButtonClick}
         >
           {rightButtonLabel}
         </Button>
       </S.ButtonsTopWrapper>
-      <Button
-        icon={bottomButtonIcon}
-        minimal={true}
-        as={'a'}
-        href={urlLinkBottomButtonClick}
-        target={'_blank'}
-      >
-        {bottomButtonLabel}
-      </Button>
     </S.ButtonsWrapper>
   </S.Wrapper>
 )

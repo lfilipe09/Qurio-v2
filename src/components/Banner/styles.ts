@@ -70,10 +70,6 @@ export const Image = styled.img`
 
 export const Ribbon = styled.div`
   ${({ theme }) => css`
-    position: absolute;
-    z-index: 1;
-    top: 1.5rem;
-    left: 1.5rem;
     background-color: ${theme.colors.green};
     padding: 1px 10px 1px 10px;
     border-radius: 5px;
@@ -81,4 +77,12 @@ export const Ribbon = styled.div`
     box-shadow: 0px 0px 30px #e9e955;
     font-size: ${theme.font.sizes.xsmall};
   `}
+`
+export const RibbonWrapper = styled.div`
+  position: absolute;
+  display: flex;
+  grid-gap: 1rem;
+  z-index: 1;
+  top: 1.5rem;
+  left: 1.5rem;
 `

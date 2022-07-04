@@ -18,6 +18,10 @@ export const InfoWrapper = styled.div`
   }
 `
 
+export const HeaderContentButtonWrapper = styled.div`
+  max-width: 100rem;
+`
+
 export const Image = styled.img`
   ${({ theme }) => css`
     width: 100%;
@@ -27,7 +31,16 @@ export const Image = styled.img`
     background-position: center center;
     background-repeat: no-repeat;
     ${media.greaterThan('medium')`
-      height: 40rem;
+      height: 50rem;
     `}
+  `}
+`
+export const ButtonWrapper = styled.div`
+  display: flex;
+  grid-gap: 1rem;
+  padding-bottom: 3rem;
+  margin-left: -8px;
+  ${media.lessThan('medium')`
+    flex-direction: column
   `}
 `

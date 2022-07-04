@@ -9,14 +9,11 @@ export const Wrapper = styled.div`
     ${media.greaterThan('medium')`
       background: ${theme.colors.white};
       padding: ${theme.spacings.medium};
+      padding-bottom: 0;
       color: ${theme.colors.black};
     `}
     h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+    h2 {
       color: ${theme.colors.black};
       margin: ${theme.spacings.xsmall} 0;
       ${HeadingStyles.wrapperModifiers.lineLeft(theme, 'primary')};
@@ -53,8 +50,5 @@ export const Image = styled.img`
 `
 
 export const QuizWrapper = styled.div`
-  max-width: 60rem;
-  margin: 0 auto;
-  margin-top: 4rem;
-  margin-bottom: 4rem;
+  margin-bottom: 1.6rem;
 `

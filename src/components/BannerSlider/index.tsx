@@ -1,10 +1,11 @@
-import Banner, { BannerProps } from 'components/Banner'
+import Banner from 'components/Banner'
 import SliderMock, { SliderSettings } from 'components/Slider'
+import { useRouter } from 'next/router'
+import { PostThumbProps } from 'types/api'
 import * as S from './styles'
 
 export type BannerSliderProps = {
-  items: BannerProps[]
-  handleOnClick?: (index: number) => void
+  posts: PostThumbProps[]
 }
 
 const settings: SliderSettings = {
@@ -26,18 +27,24 @@ const settings: SliderSettings = {
   ]
 }
 
-const BannerSlider = ({ items, handleOnClick }: BannerSliderProps) => (
-  <S.Wrapper>
-    <SliderMock settings={settings}>
-      {items.map((item, index) => (
-        <Banner
-          key={item.title}
-          {...item}
-          handleOnClick={() => handleOnClick?.(index)}
-        />
-      ))}
-    </SliderMock>
-  </S.Wrapper>
-)
+const BannerSlider = ({ posts }: BannerSliderProps) => {
+  const routes = useRouter()
+  const { push } = routes
+  return (
+    <S.Wrapper>
+      <SliderMock settings={settings}>
+        {posts.map((post) => (
+          <Banner
+            key={post.id}
+            {...post}
+            handleOnClick={() => {
+              push(`/pack/post/${post.slug}`)
+            }}
+          />
+        ))}
+      </SliderMock>
+    </S.Wrapper>
+  )
+}
 
 export default BannerSlider

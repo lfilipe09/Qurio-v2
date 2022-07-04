@@ -1,61 +1,46 @@
-import Heading from 'components/Heading'
 import MediaMatch from 'components/MediaMatch'
 import * as S from './styles'
 
 export type TextContentProps = {
-  title?: string
-  content: string
-  imgUrlsDesktop?: string[]
-  imgUrlsMobile?: string[]
+  content?: string
+  imgUrlDesktop?: string
+  imgAltDesktop?: string
+  imgUrlMobile?: string
+  imgAltMobile?: string
   quiz?: JSX.Element
-  quizPoint?: JSX.Element
-  buttonUrl?: string
+  survey?: JSX.Element
 }
 
 const TextContent = ({
-  title,
   content,
-  imgUrlsDesktop,
-  imgUrlsMobile,
+  imgUrlDesktop,
+  imgAltDesktop,
+  imgUrlMobile,
+  imgAltMobile,
   quiz,
-  quizPoint,
-  buttonUrl
-}: TextContentProps) => (
-  <S.Wrapper data-cy="content">
-    {!!title && (
-      <Heading lineLeft lineColor="secondary">
-        {title}
-      </Heading>
-    )}
+  survey
+}: TextContentProps) => {
+  return (
+    <S.Wrapper data-cy="content">
+      {!!content && <div dangerouslySetInnerHTML={{ __html: content }} />}
 
-    <div dangerouslySetInnerHTML={{ __html: content }} />
+      {!!quiz && <S.QuizWrapper>{quiz}</S.QuizWrapper>}
 
-    {!!quiz && <S.QuizWrapper>{quiz}</S.QuizWrapper>}
+      {!!survey && <S.QuizWrapper>{survey}</S.QuizWrapper>}
 
-    {!!quizPoint && <S.QuizWrapper>{quizPoint}</S.QuizWrapper>}
+      {!!imgUrlDesktop && (
+        <MediaMatch greaterThan="medium">
+          <S.Image alt={imgAltDesktop ?? ''} src={imgUrlDesktop} />
+        </MediaMatch>
+      )}
 
-    {!!imgUrlsDesktop && (
-      <MediaMatch greaterThan="medium">
-        {imgUrlsDesktop.map((imgUrlDesktop) => (
-          <S.Image key={imgUrlDesktop} src={imgUrlDesktop} />
-        ))}
-      </MediaMatch>
-    )}
-
-    {!!imgUrlsMobile && (
-      <MediaMatch lessThan="medium">
-        {imgUrlsMobile.map((imgUrlMobile) => (
-          <S.Image key={imgUrlMobile} src={imgUrlMobile} />
-        ))}
-      </MediaMatch>
-    )}
-
-    {!!buttonUrl && (
-      <a href={buttonUrl} target="_blank" rel="noreferrer">
-        Acesse aqui o conteúdo na íntegra
-      </a>
-    )}
-  </S.Wrapper>
-)
+      {!!imgUrlMobile && (
+        <MediaMatch lessThan="medium">
+          <S.Image alt={imgAltMobile ?? ''} src={imgUrlMobile} />
+        </MediaMatch>
+      )}
+    </S.Wrapper>
+  )
+}
 
 export default TextContent

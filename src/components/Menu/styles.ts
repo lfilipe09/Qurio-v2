@@ -25,13 +25,7 @@ export const MenuGroup = styled.div`
   `}
 `
 
-export const LogoWrapper = styled.div`
-  ${media.lessThan('medium')`
-    position:absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  `}
-`
+export const LogoWrapper = styled.div``
 
 export const IconWrapper = styled.div`
   ${({ theme }) => css`
@@ -44,8 +38,15 @@ export const IconWrapper = styled.div`
 
 export const MenuNav = styled.div`
   ${({ theme }) => css`
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
     ${media.greaterThan('medium')`
 			margin-left: ${theme.spacings.small};
+      padding: 20rem;
 		`}
   `}
 `
@@ -53,7 +54,7 @@ export const MenuNav = styled.div`
 export const MenuLink = styled.a`
   ${({ theme }) => css`
     position: relative;
-    color: ${theme.colors.white};
+    color: ${theme.colors.black};
     font-size: ${theme.font.sizes.medium};
     margin: 0.3rem ${theme.spacings.small} 0;
     text-decoration: none;
@@ -159,15 +160,21 @@ export const MenuWrapper = styled.div`
     justify-content: space-between;
     width: 100%;
     div {
+      display: flex;
       align-items: center;
-      p {
+      button {
         display: none;
+        &:first-child {
+          margin-right: 2rem;
+          display: block;
+        }
         ${media.greaterThan('medium')`display: block;`}
+        padding: 0;
+        width: unset;
         margin-right: 10px;
         font-size: ${theme.font.sizes.small};
         font-weight: ${theme.font.bold};
       }
-      display: flex;
     }
   `}
 `
@@ -202,4 +209,31 @@ export const Logo = styled.img`
 export const Image = styled.img`
   width: 6rem;
   height: 6rem;
+`
+export const Title = styled.div`
+  ${({ theme }) => css`
+    font-weight: ${theme.font.bold};
+    width: 100%;
+    ${media.greaterThan('medium')`
+        font-size: 8rem;
+        line-height: 7rem;
+        margin-bottom: 4rem;
+    `}
+    ${media.lessThan('medium')`
+        margin-bottom: 2rem;
+        margin-left: 1rem ;
+        font-size: ${theme.font.sizes.xxxlarge};
+        line-height: 4rem;
+      `}
+  `}
+`
+
+export const Text = styled.div`
+  ${media.lessThan('medium')`
+    margin-left: 1rem;
+  `}
+  width: 100%;
+  p {
+    max-width: 85rem;
+  }
 `

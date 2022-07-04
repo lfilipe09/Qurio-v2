@@ -7,7 +7,7 @@ export type WrapperProps = {
 
 export const Wrapper = styled.main<WrapperProps>`
   ${({ backgroundUrl }) => css`
-    /* position: relative; */
+    position: relative;
     border-radius: 2rem;
     background-image: url(${backgroundUrl});
     background-size: cover;
@@ -21,7 +21,7 @@ export const Wrapper = styled.main<WrapperProps>`
 
     /* When the animation is finished, start again */
     animation-iteration-count: infinite;
-    
+
 
     @keyframes animatedBackground  {
       0% {background-position: 0 -200px;}
@@ -29,7 +29,7 @@ export const Wrapper = styled.main<WrapperProps>`
       100% {background-position: 0 -200px;}
 
     `}
-    
+
     }
   `}
 `
@@ -291,27 +291,4 @@ export const MenuFull = styled.nav<MenuFullProps>`
 export const ButtonWrapper = styled.div`
   width: 24rem;
   margin-top: 2rem;
-`
-
-export const Text = styled.div`
-  ${media.lessThan('medium')`
-    margin-left: 1rem ;
-  `}
-`
-
-export const Title = styled.div`
-  ${({ theme }) => css`
-    font-weight: ${theme.font.bold};
-    ${media.greaterThan('medium')`
-        font-size: 8rem;
-        line-height: 7rem;
-        margin-bottom: 4rem
-    `}
-    ${media.lessThan('medium')`
-        margin-bottom: 2rem;
-        margin-left: 1rem ;
-        font-size: ${theme.font.sizes.xxxlarge};
-        line-height: 4rem;
-      `}
-  `}
 `
