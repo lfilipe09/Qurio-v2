@@ -32,7 +32,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     id: post.id,
     slug: post.attributes.slug,
     title: post.attributes.title,
-    imageUrl: `${process.env.NEXT_PUBLIC_API_URL}${post.attributes.cover.data.attributes.url}`,
+    imageUrl: `${post.attributes.cover.data.attributes.url}`,
     imageAlt: post.attributes.cover.data.attributes.alternativeText,
     formats: post.attributes.formats.data.map(
       (format) => format.attributes.name
@@ -51,7 +51,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         null,
       readingHours: pack.reading_hours,
       readingMinutes: pack.reading_minutes,
-      backgroundUrl: `${process.env.NEXT_PUBLIC_API_URL}${pack.cover.data.attributes.url}`,
+      backgroundUrl: `${pack.cover.data.attributes.url}`,
       posts: posts
     }
   }
