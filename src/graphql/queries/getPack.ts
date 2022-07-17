@@ -1,5 +1,18 @@
 import { gql } from 'graphql-request'
 
+export const GET_PACK_SLUGS = gql`
+  query GET_PACK_SLUGS($limit: Int!) {
+    packs(pagination: { limit: $limit }) {
+      data {
+        id
+        attributes {
+          slug
+        }
+      }
+    }
+  }
+`
+
 export const GET_PACK_BY_SLUG = gql`
   query QUERY_PACK_BY_SLUG($filter: String) {
     packs(filters: { slug: { eq: $filter } }) {

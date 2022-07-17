@@ -1,5 +1,18 @@
 import { gql } from 'graphql-request'
 
+export const GET_POSTS_SLUGS = gql`
+  query QUERY_POSTS_SLUGS($limit: Int!) {
+    posts(pagination: { limit: $limit }) {
+      data {
+        id
+        attributes {
+          slug
+        }
+      }
+    }
+  }
+`
+
 export const GET_POST_BY_SLUG = gql`
   query QUERY_POST_BY_SLUG($filter: String) {
     posts(filters: { slug: { eq: $filter } }) {

@@ -1,6 +1,11 @@
 import client from 'graphql/client'
-import { GET_POST_BY_SLUG, GET_QUIZ_RESULTS } from 'graphql/queries/getPost'
-import { GetServerSideProps } from 'next'
+import {
+  GET_POSTS_SLUGS,
+  GET_POST_BY_SLUG,
+  GET_QUIZ_RESULTS
+} from 'graphql/queries/getPost'
+import { GetStaticProps } from 'next'
+import { useRouter } from 'next/router'
 import Post from 'templates/Post'
 import {
   ContentAPIProps,
@@ -9,14 +14,36 @@ import {
   QuizProps,
   QuizResultAPIProps,
   ResponsiveImageProps,
-  SurveyProps
+  SurveyProps,
+  PostSlugAPI
 } from 'types/api'
 
 export default function PostPage(props: PostProps) {
+  const router = useRouter()
+
+  // se a rota não tiver sido gerada ainda
+  // você pode mostrar um loading
+  // uma tela de esqueleto
+  if (router.isFallback) return null
   return <Post {...props} />
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+// gerar em build time (/game/bla, /bame/foo ...)
+export async function getStaticPaths() {
+  const { posts } = await client.request(GET_POSTS_SLUGS, {
+    limit: 100
+  })
+
+  const paths = posts.data.map((post: PostSlugAPI) => {
+    return {
+      params: { slug: post.attributes.slug }
+    }
+  })
+
+  return { paths, fallback: true }
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const postData = await client.request(GET_POST_BY_SLUG, {
     filter: `${params?.slug}`
   })
@@ -120,6 +147,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   })
 
   return {
+    revalidate: 60,
     props: {
       title: post.title,
       packSlug: post.pack.data.attributes.slug,

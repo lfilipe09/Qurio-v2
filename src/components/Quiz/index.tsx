@@ -25,7 +25,8 @@ const Quiz = ({
       <S.Header>
         <div>QUIZ</div>
         <div>
-          <h2>{title}</h2> <p>{description}</p>
+          <h2>{title}</h2>{' '}
+          <div dangerouslySetInnerHTML={{ __html: description as string }} />
         </div>
       </S.Header>
       <S.Wrapper>
@@ -86,7 +87,13 @@ const Quiz = ({
                       }
                       quizType === 'frequency' &&
                         questions.length === indexQuestion + 1 &&
-                        setResult(getMostFrequent(result as string[]))
+                        setResult(
+                          getMostFrequent(
+                            (result as string[]).filter(
+                              (result) => result !== null
+                            )
+                          )
+                        )
                     }}
                   >
                     Próximo

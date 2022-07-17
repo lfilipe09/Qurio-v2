@@ -1,17 +1,46 @@
 import client from 'graphql/client'
 import {
   GET_GROUP_PACK_BY_SLUG,
-  GET_PACK_BY_SLUG
+  GET_PACK_BY_SLUG,
+  GET_PACK_SLUGS
 } from 'graphql/queries/getPack'
-import { GetServerSideProps } from 'next'
+import { GetStaticProps } from 'next'
+import { useRouter } from 'next/router'
 import Pack from 'templates/Pack'
-import { Formats, PackInsideGroup, PackProps, PostInsideGroup } from 'types/api'
+import {
+  Formats,
+  PackInsideGroup,
+  PackProps,
+  PostInsideGroup,
+  PostSlugAPI
+} from 'types/api'
 
 export default function PackPage(props: PackProps) {
+  const router = useRouter()
+
+  // se a rota não tiver sido gerada ainda
+  // você pode mostrar um loading
+  // uma tela de esqueleto
+  if (router.isFallback) return null
   return <Pack {...props} />
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+// gerar em build time (/game/bla, /bame/foo ...)
+export async function getStaticPaths() {
+  const { packs } = await client.request(GET_PACK_SLUGS, {
+    limit: 100
+  })
+
+  const paths = packs.data.map((pack: PostSlugAPI) => {
+    return {
+      params: { slug: pack.attributes.slug }
+    }
+  })
+
+  return { paths, fallback: true }
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const packData = await client.request(GET_PACK_BY_SLUG, {
     filter: `${params?.slug}`
   })
@@ -40,6 +69,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   }))
 
   return {
+    revalidate: 60,
     props: {
       title: pack.title,
       slug: pack.slug,

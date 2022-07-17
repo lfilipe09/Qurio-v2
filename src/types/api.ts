@@ -225,3 +225,10 @@ export type PostProps = {
   originUrl: string
   contents: (string | QuizProps | SurveyProps | ResponsiveImageProps)[]
 }
+
+export type PostSlugAPI = {
+  id: string
+  attributes: {
+    slug: string
+  }
+}

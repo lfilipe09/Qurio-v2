@@ -73,7 +73,8 @@ const Survey = ({
       <S.Header>
         <div>ENQUETE</div>
         <div>
-          <h2>{title}</h2> <p>{description}</p>
+          <h2>{title}</h2>{' '}
+          <div dangerouslySetInnerHTML={{ __html: description as string }} />
         </div>
       </S.Header>
       <S.Wrapper surveySubmited={surveySubmited}>
