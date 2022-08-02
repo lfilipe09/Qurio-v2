@@ -53,6 +53,7 @@ export const getStaticProps: GetStaticProps = async () => {
   )
 
   return {
+    revalidate: 60,
     props: {
       heroCarousel: {
         banners
