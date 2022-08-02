@@ -25,7 +25,7 @@ const Pack = ({
   return (
     <S.Wrapper>
       <MediaMatch lessThan={'medium'}>
-        <Menu title={title} description={description} />
+        <Menu title={title} isPack={true} description={description} />
       </MediaMatch>
       <S.HeaderWrapper>
         <Header
@@ -56,7 +56,7 @@ const Pack = ({
       <S.BannerSliderWrapper>
         <S.MenuBannerWrapper>
           <MediaMatch greaterThan={'medium'}>
-            <Menu title={title} description={description} />
+            <Menu title={title} isPack={true} description={description} />
           </MediaMatch>
           <MediaMatch lessThan={'medium'}>
             <BannerSlider posts={posts} />

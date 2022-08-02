@@ -9,6 +9,7 @@ export type ButtonProps = {
   icon?: JSX.Element | null
   minimal?: boolean
   outline?: boolean
+  side?: 'left' | 'right'
   as?: React.ElementType
 } & ButtonTypes
 
@@ -17,6 +18,7 @@ const Button = ({
   icon,
   minimal,
   outline,
+  side = 'left',
   ...props
 }: ButtonProps) => (
   <S.Wrapper
@@ -25,7 +27,8 @@ const Button = ({
     outline={outline}
     {...props}
   >
-    {!!icon && icon} {!!children && <span>{children}</span>}
+    {!!icon && side === 'left' && icon} {!!children && <span>{children}</span>}{' '}
+    {!!icon && side === 'right' && icon}
   </S.Wrapper>
 )
 

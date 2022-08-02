@@ -8,10 +8,11 @@ import Button from 'components/Button'
 export type MenuProps = {
   description?: string
   title?: string
+  isPack?: boolean
 }
 
 //dupla negação transforma em booleano para comparar de fato
-const Menu = ({ description, title }: MenuProps) => {
+const Menu = ({ description, title, isPack = false }: MenuProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isAboutOpen, setIsAboutOpen] = useState(false)
 
@@ -22,17 +23,40 @@ const Menu = ({ description, title }: MenuProps) => {
           <a>
             <S.Logo src="/img/logo.png" alt="hsm" />
           </a>
+          {!isPack && (
+            <>
+              <S.MenuLink>Home</S.MenuLink>
+              <S.MenuLink>Sobre</S.MenuLink>
+            </>
+          )}
         </S.LogoWrapper>
         <div>
-          <Button minimal={true} onClick={() => setIsAboutOpen(true)}>
-            SOBRE O PACK
-          </Button>
-          <Button minimal={true} onClick={() => setIsAboutOpen(true)}>
-            MENU
-          </Button>
-          <S.IconWrapper onClick={() => setIsOpen(true)}>
-            <MenuIcon aria-label="Open Menu" color="black" />
-          </S.IconWrapper>
+          {isPack ? (
+            <>
+              <Button minimal={true} onClick={() => setIsAboutOpen(true)}>
+                SOBRE O PACK
+              </Button>
+              <Button minimal={true} onClick={() => setIsOpen(true)}>
+                MENU
+              </Button>
+              <S.IconWrapper onClick={() => setIsOpen(true)}>
+                <MenuIcon aria-label="Open Menu" color="black" />
+              </S.IconWrapper>
+            </>
+          ) : (
+            <>
+              <S.Login>
+                <Button as={'button'} minimal={true} disabled>
+                  Login
+                </Button>
+              </S.Login>
+              <S.MenuIcon>
+                <S.IconWrapper onClick={() => setIsOpen(true)}>
+                  <MenuIcon aria-label="Open Menu" color="black" />
+                </S.IconWrapper>
+              </S.MenuIcon>
+            </>
+          )}
         </div>
       </S.MenuWrapper>
 

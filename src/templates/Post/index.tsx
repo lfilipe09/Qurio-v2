@@ -1,4 +1,3 @@
-import { Container } from 'components/Container'
 import { CloseIcon } from 'components/Icons'
 import Quiz from 'components/Quiz'
 import Survey from 'components/Survey'
@@ -25,7 +24,7 @@ const Post = ({
   const routes = useRouter()
   const { push } = routes
   return (
-    <Container>
+    <S.Container>
       <S.MenuFullClose>
         <S.Icon onClick={() => push(`/pack/${packSlug}`)}>
           <CloseIcon />
@@ -100,7 +99,7 @@ const Post = ({
           <></>
         </S.TextColumnWrapper>
       </S.WrapperMenuFull>
-    </Container>
+    </S.Container>
   )
 }
 

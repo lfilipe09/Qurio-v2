@@ -53,12 +53,16 @@ export const MenuNav = styled.div`
 
 export const MenuLink = styled.a`
   ${({ theme }) => css`
+    display: none;
     position: relative;
     color: ${theme.colors.black};
     font-size: ${theme.font.sizes.medium};
     margin: 0.3rem ${theme.spacings.small} 0;
+    font-weight: ${theme.font.bold};
+    margin-left: ${theme.spacings.small};
     text-decoration: none;
     text-align: center;
+    ${media.greaterThan('medium')`display: block;`}
     &:hover {
       &::after {
         content: '';
@@ -204,6 +208,7 @@ export const CreateAccount = styled.a`
 export const Logo = styled.img`
   width: 70px;
   height: 23px;
+  margin-right: 2rem;
 `
 
 export const Image = styled.img`
@@ -236,4 +241,18 @@ export const Text = styled.div`
   p {
     max-width: 85rem;
   }
+`
+
+export const Login = styled.div`
+  display: block;
+  ${media.lessThan('medium')`
+    display: none !important;
+  `}
+`
+
+export const MenuIcon = styled.div`
+  display: none !important;
+  ${media.lessThan('medium')`
+    display: block !important;
+  `}
 `

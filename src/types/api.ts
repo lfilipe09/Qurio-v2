@@ -232,3 +232,119 @@ export type PostSlugAPI = {
     slug: string
   }
 }
+
+export type HeroPostsProps = {
+  id: string
+  title: string
+  slug: string
+  formats: string[]
+}
+
+export type HeroBannerProps = {
+  id: string
+  ribbon: string
+  coverImage: {
+    url: string
+    alternativeText: string
+  }
+  pack: {
+    title: string
+    slug: string
+  }
+  posts: HeroPostsProps[]
+  readingHours: number
+  readingMinutes: number
+}
+
+export type HeroCarouselProps = {
+  banners: HeroBannerProps[]
+}
+
+export type FormatPostAPIProps = {
+  id: string
+  attributes: {
+    name: string
+  }
+}
+
+export type BannerPostAPIProps = {
+  id: string
+  attributes: {
+    title: string
+    slug: string
+    formats: {
+      data: FormatPostAPIProps[]
+    }
+  }
+}
+
+export type HeroBannerAPIProps = {
+  id: string
+  ribbon: string
+  image: {
+    data: {
+      attributes: {
+        url: string
+        alternativeText: string
+      }
+    }
+  }
+  pack: {
+    data: {
+      id: string
+      attributes: {
+        title: string
+        slug: string
+        posts: {
+          data: BannerPostAPIProps[]
+        }
+        reading_hours: number
+        reading_minutes: number
+      }
+    }
+  }
+}
+
+export type PackCardAPIProps = {
+  ribbon: string
+  pack: {
+    data: {
+      id: string
+      attributes: {
+        title: string
+        slug: string
+        cover: {
+          data: {
+            attributes: {
+              url: string
+              alternativeText: string
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+export type SimpleCarouselAPIProps = {
+  id: string
+  title: string
+  pack_card: PackCardAPIProps[]
+}
+
+export type CardProps = {
+  id: string
+  slug: string
+  title: string
+  coverImage: {
+    url: string
+    alternativeText: string
+  }
+  ribbon?: React.ReactNode
+}
+
+export type SimpleCarouselProps = {
+  title: string
+  id: string
+  packCard: CardProps[]
+}

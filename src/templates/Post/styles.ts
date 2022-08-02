@@ -66,3 +66,9 @@ export const TextColumnWrapper = styled.div`
   padding: 4rem;
   `}
 `
+
+export const Container = styled.div`
+  height: 100vh;
+  width: 100%;
+  padding: 2rem;
+`
