@@ -1,4 +1,4 @@
-import { Share } from '@styled-icons/remix-fill'
+import { RemoveRedEye } from '@styled-icons/material-outlined'
 import Button from 'components/Button'
 import { CopyIcon, SlideIcon } from 'components/Icons'
 import { format } from 'date-fns'
@@ -58,17 +58,19 @@ const TextChapterOpener = ({
           >
             {copiedToClipboard ? 'link copiado!' : 'copiar referência'}
           </Button>
+          {slideUrl && (
+            <Button
+              icon={<SlideIcon />}
+              minimal={true}
+              as={'a'}
+              href={slideUrl}
+              target={'_blank'}
+            >
+              {'adicionar conteúdo ao meu slide'}
+            </Button>
+          )}
           <Button
-            icon={<SlideIcon />}
-            minimal={true}
-            as={'a'}
-            href={slideUrl}
-            target={'_blank'}
-          >
-            {'adicionar conteúdo ao meu slide'}
-          </Button>
-          <Button
-            icon={<Share />}
+            icon={<RemoveRedEye />}
             minimal={true}
             as={'a'}
             href={originUrl}
