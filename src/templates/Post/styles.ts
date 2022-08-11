@@ -26,7 +26,6 @@ export const ChapterOpenerWrapper = styled.div`
 `
 
 export const WrapperMenuFull = styled.div`
-  max-height: 100vh;
   ${media.greaterThan('medium')`
   display: grid;
   grid-template-columns: 3fr 1fr;
@@ -37,9 +36,8 @@ export const WrapperMenuFull = styled.div`
 
 export const ContentWrapper = styled.div`
   ${({ theme }) => css`
-    padding: 9rem;
     ${media.lessThan('medium')`
-  padding: 2rem;
+    padding: 2rem;
   `}
     margin-bottom: 5rem;
     /* width */
@@ -68,7 +66,6 @@ export const TextColumnWrapper = styled.div`
 `
 
 export const Container = styled.div`
-  height: 100vh;
   width: 100%;
   padding: 2rem;
 `

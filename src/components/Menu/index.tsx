@@ -4,6 +4,7 @@ import { Close as CloseIcon } from '@styled-icons/material-outlined/Close'
 
 import * as S from './styles'
 import Button from 'components/Button'
+import Link from 'next/link'
 
 export type MenuProps = {
   description?: string
@@ -20,12 +21,16 @@ const Menu = ({ description, title, isPack = false }: MenuProps) => {
     <S.Wrapper>
       <S.MenuWrapper>
         <S.LogoWrapper>
-          <a>
-            <S.Logo src="/img/logo.png" alt="hsm" />
-          </a>
+          <Link href="/" passHref>
+            <a>
+              <S.Logo src="/img/logo.png" alt="qurio" />
+            </a>
+          </Link>
           {!isPack && (
             <>
-              <S.MenuLink>Home</S.MenuLink>
+              <Link href="/" passHref>
+                <S.MenuLink>Home</S.MenuLink>
+              </Link>
               <S.MenuLink>Sobre</S.MenuLink>
             </>
           )}

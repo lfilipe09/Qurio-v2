@@ -4,6 +4,7 @@ import * as BannerStyles from 'components/Banner/styles'
 
 export const Wrapper = styled.section`
   ${({ theme }) => css`
+    position: relative;
     .slick-dots {
       list-style: none;
       display: flex !important;
@@ -32,16 +33,18 @@ export const Wrapper = styled.section`
       }
     }
     ${media.greaterThan('large')`
-    .slick-slide {
-      padding: 0 2rem;
-    }
+      .slick-slide {
+        padding: 0 2rem;
+      }
+      .slick-slider {
+        z-index: 10;
+      }
     `}
     ${media.greaterThan('large')`
       ${BannerStyles.Wrapper} {
         max-width: 104rem;
         margin: 0 auto;
       }
-
     `}
   `}
 `

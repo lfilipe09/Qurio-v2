@@ -18,6 +18,9 @@ export const Wrapper = styled.main`
       }
     }
   `}
+    ${media.greaterThan('medium')`
+    box-shadow: 0 0.4rem 0.5rem 0 rgba(0, 0, 0, 0.1);
+  `}
   `}
 `
 
@@ -60,7 +63,8 @@ export const Heading = styled.p`
 
 export const Title = styled.h2`
   ${({ theme }) => css`
-    font-size: ${theme.font.sizes.xlarge};
+    font-size: 3rem;
+    line-height: 3rem;
     font-weight: ${theme.font.bold};
     color: ${theme.colors.black};
     ${media.greaterThan('medium')`
@@ -95,7 +99,7 @@ export const Image = styled.img`
 export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column-reverse;
-  height: 36rem;
+  height: 40rem;
   justify-content: space-between;
   padding-top: 3rem;
   ${media.greaterThan('medium')`
@@ -105,6 +109,7 @@ export const ContentWrapper = styled.div`
     align-items: center;
     justify-content: center;
     padding-top: 0rem;
+    margin-bottom: 1rem;
   `}
 `
 

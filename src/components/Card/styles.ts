@@ -8,7 +8,9 @@ export const Wrapper = styled.article`
     display: flex;
     flex-direction: column;
     height: 20rem;
-    background-color: ${theme.colors.white};
+    box-shadow: 0 0.4rem 0.5rem 0 rgba(0, 0, 0, 0.2);
+    border-radius: ${theme.border.radius};
+    margin: 1rem 0;
     ${RibbonStyles.Wrapper} {
       bottom: 0;
       right: unset;

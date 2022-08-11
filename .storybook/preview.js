@@ -1,4 +1,3 @@
-import { RouterContext } from 'next/dist/shared/lib/router-context'
 import GlobalStyles from '../src/styles/global'
 import { ThemeProvider } from 'styled-components'
 import theme from 'styles/theme'
@@ -20,9 +19,6 @@ export const parameters = {
         value: theme.colors.primary
       }
     ]
-  },
-  nextRouter: {
-    Provider: RouterContext.Provider
   }
 }
 
