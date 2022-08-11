@@ -122,10 +122,11 @@ const Quiz = ({
               <>
                 <S.TitleResult>{result}</S.TitleResult>
                 <S.DescriptionResult>
-                  {frequencyQuizResults?.map((frequencyQuizResult) => {
-                    frequencyQuizResult.title === result &&
+                  {frequencyQuizResults?.map(
+                    (frequencyQuizResult) =>
+                      frequencyQuizResult.title === result &&
                       frequencyQuizResult.description
-                  })}
+                  )}
                 </S.DescriptionResult>
               </>
             )}
