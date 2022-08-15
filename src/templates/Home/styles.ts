@@ -18,7 +18,6 @@ export const HeroBannerWrapper = styled.div`
     `}
   `}
 `
-
 export const PopularWrapper = styled.div`
   ${({ theme }) => css`
     background-color: #f5f5f5;
@@ -30,4 +29,21 @@ export const PopularWrapper = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+`
+
+export const HighlightWrapper = styled.div`
+  grid-gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  ${media.lessThan('medium')`
+      grid-gap: 2rem;
+    `}
+`
+
+export const LastPacksWrapper = styled.div`
+  background-color: #f5f5f5;
+  padding-bottom: 10rem;
+  ${media.lessThan('medium')`
+      grid-gap: 2rem;
+    `}
 `

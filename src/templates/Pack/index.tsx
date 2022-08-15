@@ -3,6 +3,7 @@ import BannerSlider from 'components/BannerSlider'
 import Header from 'components/Header'
 import MediaMatch from 'components/MediaMatch'
 import Menu from 'components/Menu'
+import Head from 'next/head'
 import * as S from './styles'
 import { PackProps } from 'types/api'
 import { useRouter } from 'next/router'
@@ -24,6 +25,9 @@ const Pack = ({
 
   return (
     <S.Wrapper>
+      <Head>
+        <title>Pack - {title}</title>
+      </Head>
       <MediaMatch lessThan={'medium'}>
         <Menu title={title} isPack={true} description={description} />
       </MediaMatch>

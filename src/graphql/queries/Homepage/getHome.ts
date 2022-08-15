@@ -91,6 +91,7 @@ export const GET_HOMEPAGE = gql`
                 id
                 attributes {
                   title
+                  slug
                   reading_hours
                   reading_minutes
                   posts {
@@ -98,6 +99,7 @@ export const GET_HOMEPAGE = gql`
                       id
                       attributes {
                         title
+                        slug
                         formats {
                           data {
                             id
@@ -148,6 +150,28 @@ export const GET_HOMEPAGE = gql`
                 }
               }
               link
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+export const GET_LAST_PACKS = gql`
+  query GET_LAST_PACKS {
+    packs(sort: "release:desc", pagination: { limit: 3 }) {
+      data {
+        id
+        attributes {
+          title
+          slug
+          cover {
+            data {
+              attributes {
+                url
+                alternativeText
+              }
             }
           }
         }

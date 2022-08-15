@@ -5,6 +5,7 @@ import TextChapterOpener from 'components/TextChapterOpener'
 import TextContent from 'components/TextContent'
 import client from 'graphql/client'
 import { UPDATE_SURVEY } from 'graphql/queries/getPost'
+import Head from 'next/head'
 import Base from 'templates/Base'
 import { PostProps } from 'types/api'
 import * as S from './styles'
@@ -22,6 +23,9 @@ const Post = ({
 }: PostProps) => {
   return (
     <Base>
+      <Head>
+        <title>Post - {title}</title>
+      </Head>
       <Container>
         <S.ChapterOpenerWrapper>
           <TextChapterOpener

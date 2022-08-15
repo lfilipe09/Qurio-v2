@@ -333,13 +333,15 @@ export type SimpleCarouselAPIProps = {
 }
 
 export type CardProps = {
-  id: string
-  slug: string
+  id?: string
+  slug?: string
   title: string
   coverImage: {
     url: string
     alternativeText: string
   }
+  format?: string
+  isExternalCard?: boolean
   ribbon?: React.ReactNode
 }
 
@@ -347,4 +349,100 @@ export type SimpleCarouselProps = {
   title: string
   id: string
   packCard: CardProps[]
+}
+
+export type HighlightProps = {
+  title: string
+  coverImage: {
+    url: string
+    alternativeText: string
+  }
+  pack: {
+    title: string
+    slug: string
+  }
+  posts: HeroPostsProps[]
+  readingHours: number
+  readingMinutes: number
+}
+
+export type UpcomingCardProps = {
+  title: string
+  id?: string
+  coverImage: {
+    url: string
+    alternativeText: string
+  }
+  ribbon?: string
+}
+
+export type UpcomingCarouselProps = {
+  title: string
+  id: string
+  packCard: UpcomingCardProps[]
+}
+
+export type UpcomingPackAPIProps = {
+  id: string
+  title: string
+  cover: {
+    data: {
+      id: string
+      attributes: {
+        url: string
+        alternativeText: string
+      }
+    }
+  }
+  ribbon: string
+}
+
+export type LastPackAPIProps = {
+  id: string
+  attributes: {
+    title: string
+    slug: string
+    cover: {
+      data: {
+        attributes: {
+          url: string
+          alternativeText: string
+        }
+      }
+    }
+  }
+}
+
+export type ExternalPackAPIProps = {
+  id: string
+  format: string
+  title: string
+  cover: {
+    data: {
+      id: string
+      attributes: {
+        url: string
+        alternativeText: string
+      }
+    }
+  }
+  link: string
+}
+
+export type ExternalCardProps = {
+  title: string
+  format: string
+  slug: string
+  id?: string
+  coverImage: {
+    url: string
+    alternativeText: string
+  }
+  ribbon?: string
+}
+
+export type ExternalCarouselProps = {
+  title: string
+  id: string
+  packCard: ExternalCardProps[]
 }
