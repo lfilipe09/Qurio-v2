@@ -50,11 +50,6 @@ const Menu = ({ description, title, isPack = false }: MenuProps) => {
             </>
           ) : (
             <>
-              <S.Login>
-                <Button as={'button'} minimal={true} disabled>
-                  Login
-                </Button>
-              </S.Login>
               <S.MenuIcon>
                 <S.IconWrapper onClick={() => setIsOpen(true)}>
                   <MenuIcon aria-label="Open Menu" color="black" />
