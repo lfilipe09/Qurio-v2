@@ -111,9 +111,11 @@ const Quiz = ({
                   result <= pointQuizResult.maxPoint && (
                     <>
                       <S.TitleResult>{pointQuizResult.title}</S.TitleResult>
-                      <S.DescriptionResult>
-                        {pointQuizResult.description}
-                      </S.DescriptionResult>
+                      <S.DescriptionResult
+                        dangerouslySetInnerHTML={{
+                          __html: pointQuizResult.description as string
+                        }}
+                      />
                     </>
                   )
                 )
@@ -124,8 +126,13 @@ const Quiz = ({
                 <S.DescriptionResult>
                   {frequencyQuizResults?.map(
                     (frequencyQuizResult) =>
-                      frequencyQuizResult.title === result &&
-                      frequencyQuizResult.description
+                      frequencyQuizResult.title === result && (
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: frequencyQuizResult.description as string
+                          }}
+                        />
+                      )
                   )}
                 </S.DescriptionResult>
               </>

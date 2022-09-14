@@ -89,4 +89,4 @@ export const Label = styled.label`
 `
 export const TitleResult = styled.h4``
 
-export const DescriptionResult = styled.p``
+export const DescriptionResult = styled.div``
