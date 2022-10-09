@@ -5,6 +5,7 @@ import HeroBannerSlider from 'components/HeroBannerSlider'
 import HighlightBanner from 'components/HighlightBanner'
 import MediaMatch from 'components/MediaMatch'
 import Mosaic, { PackMosaic } from 'components/Mosaic'
+import Head from 'next/head'
 import Base from 'templates/Base'
 import {
   ExternalCarouselProps,
@@ -35,6 +36,9 @@ const Home = ({
 }: HomePageProps) => {
   return (
     <Base>
+      <Head>
+        <title>Qurio - Homepage</title>
+      </Head>
       <S.Wrapper>
         <S.HeroBannerWrapper>
           <Container>
