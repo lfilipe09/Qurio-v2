@@ -76,7 +76,7 @@ export const Content = styled.div`
   `}
 `
 export const Info = styled.a`
-  max-width: calc(100% - 2.5rem);
+  max-width: calc(100% - 5rem);
   text-decoration: none;
 `
 

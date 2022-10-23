@@ -446,3 +446,9 @@ export type ExternalCarouselProps = {
   id: string
   packCard: ExternalCardProps[]
 }
+
+export interface UsersPermissionsRegisterInput {
+  username: string
+  email: string
+  password: string
+}

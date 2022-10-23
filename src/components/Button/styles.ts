@@ -1,10 +1,9 @@
 import styled, { css, DefaultTheme } from 'styled-components'
 import { ButtonProps } from '.'
-import { darken } from 'polished'
 
 export type WrapperProps = { hasIcon: boolean } & Pick<
   ButtonProps,
-  'minimal' | 'outline'
+  'minimal' | 'outline' | 'animated' | 'color' | 'size'
 >
 
 const wrapperModifiers = {
@@ -15,6 +14,10 @@ const wrapperModifiers = {
         margin-left: ${theme.spacings.xxsmall};
       }
     }
+  `,
+  size: (theme: DefaultTheme, size: string) => css`
+    ${size === 'small' && `font-size:${theme.font.sizes.xsmall};`}
+    ${size === 'small' && `padding: 0.5rem 1rem;`}
   `,
   minimal: (theme: DefaultTheme) => css`
     background: none;
@@ -34,13 +37,50 @@ const wrapperModifiers = {
     &:hover {
       background: #f0f0f0;
     }
+  `,
+  animated: (theme: DefaultTheme) => css`
+    background-color: transparent;
+    box-shadow: -2px 3px 11px 0px rgba(226, 226, 211, 0.5);
+    color: ${theme.colors.black};
+    svg {
+      width: 2rem;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: ${theme.colors.white};
+      border-radius: ${theme.border.radius};
+      z-index: -2;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background-color: ${theme.colors.primary};
+      border-radius: ${theme.border.radius};
+      transition: all 0.3s;
+      z-index: -1;
+    }
+    &:hover {
+      color: ${theme.colors.white};
+      &:before {
+        width: 100%;
+      }
+    }
   `
 }
 
 export const Wrapper = styled.button<WrapperProps>`
-  ${({ theme, hasIcon, minimal, outline }) => css`
+  ${({ theme, hasIcon, minimal, outline, animated, color, size }) => css`
     cursor: pointer;
-    color: ${theme.colors.white};
+    color: ${color === 'primary' ? theme.colors.black : theme.colors.white};
     font-weight: ${theme.font.bold};
     font-family: ${theme.font.family};
     font-size: ${theme.font.sizes.small};
@@ -50,15 +90,20 @@ export const Wrapper = styled.button<WrapperProps>`
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: ${theme.colors.black};
+    background-color: ${theme.colors[color ?? 'black']};
     border: 0;
     width: max-content;
+    position: relative;
+    transition: all 0.3s;
+
     &:hover {
-      background: ${darken(0.1, theme.colors.black)};
+      ${!animated && 'background: ${darken(0.1, theme.colors.black)};'}
     }
 
     ${!!hasIcon && wrapperModifiers.withIcon(theme)}
     ${!!minimal && wrapperModifiers.minimal(theme)}
     ${!!outline && wrapperModifiers.outline(theme)}
+    ${!!animated && wrapperModifiers.animated(theme)}
+    ${!!size && wrapperModifiers.size(theme, size)}
   `}
 `
