@@ -31,6 +31,16 @@ const GlobalStyles = createGlobalStyle`
     src: local(''),
         url('/fonts/poppins-v15-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
   }
+  /* neuepowertrial - normal */
+  @font-face {
+    font-family: 'Neue Power';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/NeuePower-Heavy.otf');
+    src: local(''),
+        url('/fonts/NeuePower-Heavy.otf') format('truetype'); /* Super Modern Browsers */
+  }
   * {
     margin: 0;
     padding: 0;

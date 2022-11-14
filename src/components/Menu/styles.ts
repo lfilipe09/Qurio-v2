@@ -27,9 +27,13 @@ export const MenuGroup = styled.div`
 
 export const LogoWrapper = styled.div``
 
-export const IconWrapper = styled.div`
-  ${({ theme }) => css`
-    color: ${theme.colors.white};
+export type IconWrapperProps = { color?: 'white' | 'black' }
+
+export const IconWrapper = styled.div<IconWrapperProps>`
+  ${({ color = 'black' }) => css`
+    svg {
+      color: ${color};
+    }
     cursor: pointer;
     width: 2.4rem;
     height: 2.4rem;
@@ -50,12 +54,13 @@ export const MenuNav = styled.div`
 		`}
   `}
 `
+export type MenuLinkProps = { color?: 'white' | 'black' }
 
-export const MenuLink = styled.a`
-  ${({ theme }) => css`
+export const MenuLink = styled.a<MenuLinkProps>`
+  ${({ theme, color = 'black' }) => css`
     display: none;
     position: relative;
-    color: ${theme.colors.black};
+    color: ${theme.colors[color]};
     font-size: ${theme.font.sizes.medium};
     margin: 0.3rem ${theme.spacings.small} 0;
     font-weight: ${theme.font.bold};
@@ -207,7 +212,6 @@ export const CreateAccount = styled.a`
 
 export const Logo = styled.img`
   width: 70px;
-  height: 23px;
   margin-right: 2rem;
 `
 

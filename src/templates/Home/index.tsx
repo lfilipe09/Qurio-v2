@@ -1,12 +1,13 @@
 import CardSlider from 'components/CardSlider'
 import { Container } from 'components/Container'
+import Footer from 'components/Footer'
 import Heading from 'components/Heading'
 import HeroBannerSlider from 'components/HeroBannerSlider'
 import HighlightBanner from 'components/HighlightBanner'
 import MediaMatch from 'components/MediaMatch'
+import Menu from 'components/Menu'
 import Mosaic, { PackMosaic } from 'components/Mosaic'
 import Head from 'next/head'
-import Base from 'templates/Base'
 import {
   ExternalCarouselProps,
   HeroCarouselProps,
@@ -35,13 +36,26 @@ const Home = ({
   externalCarousel
 }: HomePageProps) => {
   return (
-    <Base>
+    <>
       <Head>
         <title>Qurio - Homepage</title>
       </Head>
       <S.Wrapper>
-        <S.HeroBannerWrapper>
+        <S.MainWrapper>
           <Container>
+            <Menu colorDesktop="white" />
+            <S.HeroTextImage>
+              <S.HeroTitle>
+                O serviço de assinatura para o consultor{' '}
+                <span>lifelong learner</span>
+              </S.HeroTitle>
+              <S.Image src="/img/home-hands.png" />
+            </S.HeroTextImage>
+          </Container>
+        </S.MainWrapper>
+
+        <S.HeroBannerWrapper>
+          <Container style={{ marginTop: '-17rem' }}>
             <HeroBannerSlider banners={heroCarousel.banners} />
           </Container>
         </S.HeroBannerWrapper>
@@ -53,9 +67,7 @@ const Home = ({
                 <Heading size="medium">{simpleCarousel.title}</Heading>
               </MediaMatch>
               <MediaMatch lessThan="medium">
-                <Heading color="white" size="medium">
-                  {simpleCarousel.title}
-                </Heading>
+                <Heading size="medium">{simpleCarousel.title}</Heading>
               </MediaMatch>
             </S.Title>
             <div style={{ marginBottom: '10rem' }}>
@@ -109,7 +121,12 @@ const Home = ({
           </div>
         </Container>
       </S.Wrapper>
-    </Base>
+      <S.SectionFooter>
+        <Container>
+          <Footer />
+        </Container>
+      </S.SectionFooter>
+    </>
   )
 }
 

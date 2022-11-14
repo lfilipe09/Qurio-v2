@@ -233,6 +233,22 @@ export type PostSlugAPI = {
   }
 }
 
+export type PostCardSlugAPI = {
+  id: string
+  attributes: {
+    slug: string
+    cover: {
+      data: {
+        attributes: {
+          url: string
+          alternativeText: string
+        }
+      }
+    }
+    title: string
+  }
+}
+
 export type HeroPostsProps = {
   id: string
   title: string

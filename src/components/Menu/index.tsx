@@ -10,10 +10,16 @@ export type MenuProps = {
   description?: string
   title?: string
   isPack?: boolean
+  colorDesktop?: 'white' | 'black'
 }
 
 //dupla negação transforma em booleano para comparar de fato
-const Menu = ({ description, title, isPack = false }: MenuProps) => {
+const Menu = ({
+  description,
+  title,
+  isPack = false,
+  colorDesktop = 'black'
+}: MenuProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isAboutOpen, setIsAboutOpen] = useState(false)
 
@@ -23,15 +29,27 @@ const Menu = ({ description, title, isPack = false }: MenuProps) => {
         <S.LogoWrapper>
           <Link href="/" passHref>
             <a>
-              <S.Logo src="/img/logo.png" alt="qurio" />
+              <S.Logo
+                src={
+                  colorDesktop === 'white'
+                    ? '/img/qurio-white.png'
+                    : '/img/logo.png'
+                }
+                alt="qurio"
+              />
             </a>
           </Link>
           {!isPack && (
             <>
               <Link href="/" passHref>
-                <S.MenuLink>Home</S.MenuLink>
+                <S.MenuLink color={colorDesktop}>Home</S.MenuLink>
               </Link>
-              <S.MenuLink>Sobre</S.MenuLink>
+              <Link href="/sobre" passHref>
+                <S.MenuLink color={colorDesktop}>Sobre</S.MenuLink>
+              </Link>
+              <Link href="/acervo" passHref>
+                <S.MenuLink color={colorDesktop}>Acervo</S.MenuLink>
+              </Link>
             </>
           )}
         </S.LogoWrapper>
@@ -44,14 +62,20 @@ const Menu = ({ description, title, isPack = false }: MenuProps) => {
               <Button minimal={true} onClick={() => setIsOpen(true)}>
                 MENU
               </Button>
-              <S.IconWrapper onClick={() => setIsOpen(true)}>
+              <S.IconWrapper
+                color={colorDesktop}
+                onClick={() => setIsOpen(true)}
+              >
                 <MenuIcon aria-label="Open Menu" color="black" />
               </S.IconWrapper>
             </>
           ) : (
             <>
               <S.MenuIcon>
-                <S.IconWrapper onClick={() => setIsOpen(true)}>
+                <S.IconWrapper
+                  color={colorDesktop}
+                  onClick={() => setIsOpen(true)}
+                >
                   <MenuIcon aria-label="Open Menu" color="black" />
                 </S.IconWrapper>
               </S.MenuIcon>
@@ -63,8 +87,15 @@ const Menu = ({ description, title, isPack = false }: MenuProps) => {
       <S.MenuFull aria-hidden={!isOpen} isOpen={isOpen}>
         <CloseIcon aria-label="Close Menu" onClick={() => setIsOpen(false)} />
         <S.MenuNav>
-          <S.MenuLink href="/">Liderança 4.0</S.MenuLink>
-          <S.MenuLinkDisabled>Em breve mais conteúdo</S.MenuLinkDisabled>
+          <S.MenuLink style={{ display: 'block' }} href="/">
+            Home
+          </S.MenuLink>
+          <S.MenuLink style={{ display: 'block' }} href="/sobre">
+            Sobre
+          </S.MenuLink>
+          <S.MenuLink style={{ display: 'block' }} href="/acervo">
+            Acervo
+          </S.MenuLink>
         </S.MenuNav>
 
         <S.RegisterBox>

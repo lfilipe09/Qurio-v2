@@ -12,6 +12,27 @@ export const GET_PACK_SLUGS = gql`
     }
   }
 `
+export const GET_ALL_PACK_CARDS = gql`
+  query GET_ALL_PACK_CARDS($limit: Int!) {
+    packs(pagination: { limit: $limit }) {
+      data {
+        id
+        attributes {
+          title
+          slug
+          cover {
+            data {
+              attributes {
+                url
+                alternativeText
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
 export const GET_PACK_BY_SLUG = gql`
   query QUERY_PACK_BY_SLUG($filter: String) {

@@ -9,6 +9,8 @@ export default {
   font: {
     family:
       "Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+    familyPrincipal:
+      "Neue Power, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
     light: 300,
     normal: 400,
     bold: 600,
@@ -36,6 +38,10 @@ export default {
     darkGray: '#2E2F42',
     red: '#FF6347',
     green: '#e9e955'
+  },
+  gradient: {
+    blackLarge: 'linear-gradient(259.24deg, #000000 21.75%, #5B5757 112.83%)',
+    blackMedium: 'linear-gradient(252.47deg, #000000 6.48%, #5B5757 98.22%)'
   },
   spacings: {
     xxsmall: '0.8rem',
