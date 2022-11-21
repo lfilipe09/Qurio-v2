@@ -4,6 +4,7 @@ import Button from 'components/Button'
 import Spinner from 'components/Spinner'
 import { useState } from 'react'
 import WishlistModal from 'components/WishlistModal'
+import { mockWishlist } from './mock'
 import * as S from './styles'
 
 type WishlistButtonProps = {
@@ -58,6 +59,7 @@ const WishlistButton = ({ hasText }: WishlistButtonProps) => {
         closeModal={() => {
           setIsModalOpen(false)
         }}
+        wishlistPacks={mockWishlist}
       />
     </S.Wrapper>
   )

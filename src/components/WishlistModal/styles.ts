@@ -9,15 +9,16 @@ export const Wrapper = styled.main<WrapperProps>`
     top: 0;
     right: 0;
     width: 100%;
+    height: 100%;
     clip: rect(auto, 50rem, 0, auto);
     transition: clip 0.75s ease-out, margin 0.25s ease;
     margin: -20px 0;
     background-color: #fbfbfb;
-    padding: 2rem;
+    padding: 0.5rem 2rem;
     box-shadow: -2px 3px 11px 0px rgba(226, 226, 211, 0.5);
     display: flex;
     flex-direction: column;
-    grid-gap: 2rem;
+    grid-gap: 0.5rem;
     z-index: ${theme.layers.base};
     ${isOpen &&
     `
@@ -32,11 +33,24 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  svg {
+    width: 2rem;
+  }
+  button {
+    padding-right: 0;
+  }
 `
 
 export const Title = styled.h4``
 
-export const SearchBar = styled.div``
+export const SearchBar = styled.div`
+  ${({ theme }) => css`
+    input {
+      color: ${theme.colors.black};
+      font-size: 1.4rem;
+    }
+  `}
+`
 
 export const Body = styled.section`
   ${({ theme }) => css`
@@ -44,7 +58,7 @@ export const Body = styled.section`
     flex-direction: column;
     max-height: 23rem;
     overflow: auto;
-    padding-right: 2rem;
+    padding-right: 0.5rem;
     ::-webkit-scrollbar {
       width: 4px;
     }
@@ -67,9 +81,12 @@ export const Body = styled.section`
 
 export const Subtitle = styled.p``
 
-export const LineItem = styled.div`
+export const LineItem = styled.button`
   ${({ theme }) => css`
     display: grid;
+    border: 0;
+    background: transparent;
+    font-family: ${theme.font.family};
     grid-template-columns: 1fr 3.5fr 31px;
     grid-gap: 1rem;
     align-items: center;
@@ -113,4 +130,38 @@ export const CloseBG = styled.button<CloseBGProps>`
     background: transparent;
     border: 0;
   `}
+`
+export const ButtonCreate = styled.div`
+  position: absolute;
+  bottom: 18px;
+  right: 9px;
+`
+
+export const Footer = styled.div`
+  display: flex;
+  justify-content: end;
+  margin-bottom: 1rem;
+`
+
+export const ModalSecondary = styled.div`
+  ${({ theme }) => css`
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fbfbfb;
+    z-index: ${theme.layers.menu};
+    padding: 2rem;
+  `}
+`
+
+export const BodySecondary = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  grid-gap: 2rem;
 `

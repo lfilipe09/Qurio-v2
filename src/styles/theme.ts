@@ -41,7 +41,11 @@ export default {
   },
   gradient: {
     blackLarge: 'linear-gradient(259.24deg, #000000 21.75%, #5B5757 112.83%)',
-    blackMedium: 'linear-gradient(252.47deg, #000000 6.48%, #5B5757 98.22%)'
+    blackMedium: 'linear-gradient(252.47deg, #000000 6.48%, #5B5757 98.22%)',
+    grayGradient:
+      'linear-gradient(50deg, rgb(31 31 33) 0%, rgb(70 71 79) 100%)',
+    blackMobileGradient:
+      'linear-gradient(252.47deg, #000000 6.48%, #5B5757 98.22%)'
   },
   spacings: {
     xxsmall: '0.8rem',

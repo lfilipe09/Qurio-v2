@@ -25,25 +25,25 @@ export const mockWishlist = [
   {
     id: 3,
     imgsUrl: [],
-    title: 'Liderança 4.0'
+    title: 'Motivação'
   },
   {
-    id: 2,
+    id: 4,
     imgsUrl: [
       'https://res.cloudinary.com/dte5oalky/image/upload/v1658686028/Marketing_69b82f9cfc.jpg'
     ],
-    title: 'Gestão de conflitos'
+    title: 'Transformação digital'
   },
   {
-    id: 2,
+    id: 5,
     imgsUrl: [
       'https://res.cloudinary.com/dte5oalky/image/upload/v1658686028/Marketing_69b82f9cfc.jpg'
     ],
-    title: 'Gestão de conflitos'
+    title: 'Marketing'
   },
   {
-    id: 3,
+    id: 6,
     imgsUrl: [],
-    title: 'Liderança 4.0'
+    title: 'Vendas'
   }
 ]

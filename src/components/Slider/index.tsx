@@ -1,5 +1,4 @@
 import { forwardRef, useRef } from 'react'
-import { debounce } from 'lodash'
 import SlickSlider, { Settings } from 'react-slick'
 
 import * as S from './styles'
@@ -18,6 +17,7 @@ const SliderMock: React.ForwardRefRenderFunction<SlickSlider, SliderProps> = (
 ) => {
   const divRef = useRef<Slider>(null)
   console.log(ref)
+  /*
   const onWheelSlider = debounce((e, ref) => {
     if (!ref?.current) return
 
@@ -27,9 +27,9 @@ const SliderMock: React.ForwardRefRenderFunction<SlickSlider, SliderProps> = (
       ref?.current.slickPrev()
     }
   }, 20)
-
+  */
   return (
-    <S.Wrapper onWheel={(e) => onWheelSlider(e, divRef)}>
+    <S.Wrapper>
       <SlickSlider ref={divRef} {...settings}>
         {children}
       </SlickSlider>

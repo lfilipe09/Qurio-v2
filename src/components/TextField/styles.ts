@@ -1,109 +1,184 @@
 import styled, { css, DefaultTheme } from 'styled-components'
 import { TextFieldProps } from '.'
+import { darken } from 'polished'
 
-type IconPositionProps = Pick<TextFieldProps, 'iconPosition'>
+type WrapperProps = Pick<TextFieldProps, 'disabled'> & { error?: boolean }
 
-type WrapperProps = Pick<TextFieldProps, 'disabled'> & {
-  error?: boolean
-  minimal?: boolean
+const InputLabelWrapperModifier = {
+  minimal: (theme: DefaultTheme) => css`
+    background: transparent;
+    border: 1px solid ${theme.colors.darkGray};
+  `
 }
+
+type InputLabelWrapperProps = { minimal?: boolean; inputHeight: string }
+
+export const InputLabelWrapper = styled.div<InputLabelWrapperProps>`
+  ${({ theme, minimal, inputHeight }) => css`
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background: ${theme.gradient.grayGradient};
+    border-radius: ${inputHeight == 'big' ? theme.border.radius : '0.3rem'};
+    padding: ${inputHeight == 'big' ? '0.6rem' : '0'}
+      ${inputHeight == 'big' ? theme.spacings.xsmall : '0.5rem'};
+    border: 0;
+    &:focus-within {
+      outline: 1.5px solid ${theme.colors.primary};
+    }
+    ${minimal && InputLabelWrapperModifier.minimal(theme)}
+  `}
+`
 
 export const InputWrapper = styled.div`
   ${({ theme }) => css`
     display: flex;
-    background: ${theme.colors.white};
-    border-radius: 20px;
-    padding: 0 ${theme.spacings.xsmall};
-    grid-gap: 1rem;
-    box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.05);
-    &:focus-within {
-      box-shadow: 0 0 0.5rem ${theme.colors.primary};
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    input[type='password']:not(:placeholder-shown) {
+      font-family: ${theme.font.family};
+      font-size: ${theme.font.sizes.medium};
     }
   `}
 `
-export const Input = styled.input<IconPositionProps>`
-  ${({ theme, iconPosition }) => css`
-    color: ${theme.colors.black};
+type InputProps = { inputHeight: string }
+export const Input = styled.input<InputProps>`
+  ${({ theme, inputHeight }) => css`
+    color: ${theme.colors.white};
     font-family: ${theme.font.family};
     font-size: ${theme.font.sizes.medium};
-    padding: ${theme.spacings.xxsmall} 0;
-    padding-${iconPosition}: ${theme.spacings.xsmall};
+    padding: ${inputHeight == 'big' ? theme.spacings.xxsmall : '0.3rem'} 0;
     background: transparent;
     border: 0;
     outline: none;
     width: 100%;
-    ::placeholder{
-      font-size: ${theme.font.sizes.small};
-      color: ${theme.colors.gray};
-    }
     //remover aquele autofill do google que deixa azulzinho
     //o filter none é pra remover do firefox que tem filtro só lá
-    &:-webkit-autofill{
-      -webkit-box-shadow: 0 0 0 ${theme.spacings.small} ${theme.colors.lightGray} inset;
-      filter: none
+    @-webkit-keyframes autofill {
+      0%,
+      100% {
+        color: #666;
+        background: transparent;
+      }
+    }
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      transition: background-color 5000s ease-in-out 0s;
+      -webkit-animation-delay: 1s; /* Safari support - any positive time runs instantly */
+      -webkit-animation-name: autofill;
+      -webkit-animation-fill-mode: both;
+      -webkit-text-fill-color: ${theme.colors.white} !important;
+      -webkit-background-clip: text;
+      filter: none;
     }
   `}
 `
+
+export const InputInnerMask = styled.input`
+  ${({ theme }) => css`
+    color: ${theme.colors.white};
+    font-family: ${theme.font.family};
+    font-size: ${theme.font.sizes.medium};
+    padding: ${theme.spacings.xxsmall} 0;
+    background: transparent;
+    border: 0;
+    outline: none;
+    width: 100%;
+    //remover aquele autofill do google que deixa azulzinho
+    //o filter none é pra remover do firefox que tem filtro só lá
+    @-webkit-keyframes autofill {
+      0%,
+      100% {
+        color: #666;
+        background: transparent;
+      }
+    }
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      transition: background-color 5000s ease-in-out 0s;
+      -webkit-animation-delay: 1s; /* Safari support - any positive time runs instantly */
+      -webkit-animation-name: autofill;
+      -webkit-animation-fill-mode: both;
+      -webkit-text-fill-color: ${theme.colors.white} !important;
+      -webkit-background-clip: text;
+      filter: none;
+    }
+  `}
+`
+
 export const Label = styled.label`
   ${({ theme }) => css`
+    font-family: ${theme.font.family};
     font-size: ${theme.font.sizes.small};
-    color: ${theme.colors.black};
+    color: ${theme.colors.gray};
+    font-weight: ${theme.font.bold};
     cursor: pointer;
   `}
 `
-export const Icon = styled.div<IconPositionProps>`
-  ${({ theme, iconPosition }) => css`
+export const Icon = styled.div`
+  ${({ theme }) => css`
     display: flex;
+    align-items: center;
+    justify-content: center;
     width: 2.2rem;
-    order: ${iconPosition === 'right' ? 1 : 0};
     color: ${theme.colors.gray};
     & > svg {
-      width: 90%;
+      width: 100%;
+    }
+  `}
+`
+
+export const IconButton = styled.button`
+  ${({ theme }) => css`
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    & > svg {
+      color: ${theme.colors.primary};
     }
   `}
 `
 
 export const Error = styled.p`
   ${({ theme }) => css`
-    color: ${theme.colors.red};
-    font-size: ${theme.font.sizes.xsmall};
+    color: ${theme.colors.primary};
+    font-size: ${theme.font.sizes.small};
   `}
 `
 
 const wrapperModifiers = {
   error: (theme: DefaultTheme) => css`
-    ${InputWrapper} {
-      border-color: ${theme.colors.red};
-    }
-    ${Icon},
-    ${Label} {
-      color: ${theme.colors.red};
+    ${InputLabelWrapper} {
+      outline: 1.5px solid ${theme.colors.primary};
     }
   `,
   disabled: (theme: DefaultTheme) => css`
     ${Label},
     ${Input},
+    ${InputLabelWrapper},
     ${Icon} {
       cursor: not-allowed;
-      color: ${theme.colors.gray};
+      color: ${darken(0.15, theme.colors.gray)};
+      background: ${darken(0.25, theme.colors.darkGray)};
       &::placeholder {
         color: currentColor;
       }
-    }
-  `,
-  minimal: (theme: DefaultTheme) => css`
-    ${InputWrapper} {
-      background: transparent;
-      box-shadow: unset;
-      border: 1px solid ${theme.colors.gray};
     }
   `
 }
 
 export const Wrapper = styled.div<WrapperProps>`
-  ${({ theme, error, disabled, minimal }) => css`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  grid-gap: 0.5rem;
+  ${({ theme, error, disabled }) => css`
     ${error && wrapperModifiers.error(theme)}
     ${disabled && wrapperModifiers.disabled(theme)}
-    ${minimal && wrapperModifiers.minimal(theme)}
   `}
 `

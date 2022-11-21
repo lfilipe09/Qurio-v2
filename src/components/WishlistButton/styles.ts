@@ -7,5 +7,6 @@ export const Wrapper = styled.main`
     right: 0;
     z-index: ${theme.layers.base};
     width: 100%;
+    height: 100%;
   `}
 `
