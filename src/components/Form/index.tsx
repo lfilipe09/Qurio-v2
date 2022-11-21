@@ -12,6 +12,9 @@ export const FormWrapper = styled.div`
     ${ButtonStyles.Wrapper} {
       margin: ${theme.spacings.medium} auto ${theme.spacings.xsmall};
     }
+    display: flex;
+    flex-direction: column;
+    grid-gap: 2rem;
   `}
 `
 export const FormError = styled.div`

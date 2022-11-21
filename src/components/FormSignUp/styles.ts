@@ -1,17 +1,5 @@
 import styled, { css } from 'styled-components'
-import { lighten } from 'polished'
 
-export const ForgotPassword = styled.a`
-  ${({ theme }) => css`
-    display: block;
-    font-size: ${theme.font.sizes.small};
-    color: ${theme.colors.white};
-    text-decoration: none;
-    &:hover {
-      color: ${lighten(0.2, theme.colors.black)};
-    }
-  `}
-`
 export const Title = styled.h1`
   ${({ theme }) => css`
     font-family: ${theme.font.familyPrincipal};
@@ -28,4 +16,9 @@ export const Subtitle = styled.p`
       color: ${theme.colors.primary};
     }
   `}
+`
+
+export const TextFieldSideBySide = styled.div`
+  display: flex;
+  grid-gap: 2rem;
 `

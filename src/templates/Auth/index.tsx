@@ -1,20 +1,33 @@
 import * as S from './styles'
 import { Container } from 'components/Container'
+import Head from 'next/head'
+import Menu from 'components/Menu'
 
 type AuthProps = {
-  title: string
   children: React.ReactNode
+  signType: 'sign-in' | 'sign-up'
 }
 
-const Auth = ({ children }: AuthProps) => (
+const Auth = ({ children, signType }: AuthProps) => (
   <S.Wrapper>
-    <Container>
-      <S.LogoWrapper>
-        <S.Logo src={'/img/qurio-white.png'} />
-      </S.LogoWrapper>
-      <S.FormWrapper>{children}</S.FormWrapper>
+    <Head>
+      <title>Qurio - Login</title>
+    </Head>
+    <Container
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        flexDirection: 'column'
+      }}
+    >
+      <Menu colorDesktop="white" />
+      <S.AuthContent>
+        <S.FormWrapper>{children}</S.FormWrapper>
+      </S.AuthContent>
     </Container>
-    <S.Image src={'/img/qurio-white.png'} />
+    <S.Image
+      src={signType === 'sign-in' ? '/img/signin-bg.png' : '/img/signup-bg.png'}
+    />
   </S.Wrapper>
 )
 

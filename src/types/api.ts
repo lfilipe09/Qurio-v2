@@ -464,7 +464,10 @@ export type ExternalCarouselProps = {
 }
 
 export interface UsersPermissionsRegisterInput {
-  username: string
+  fullName?: string
+  phone?: string
+  company?: string
+  position?: string
   email: string
   password: string
 }

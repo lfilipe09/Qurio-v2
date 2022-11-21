@@ -4,11 +4,24 @@ import { UsersPermissionsRegisterInput } from 'types/api'
 const emailValidation = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 const fieldsValidations = {
-  username: Joi.string().min(5).required().messages({
-    'string.empty': `O username não pode ser vazio`,
-    'string.min': `O username precisa ter no mínimo 5 dígitos`,
-    'any.required': `O campo de username é obrigatório`
+  fullName: Joi.string().min(5).required().messages({
+    'string.empty': `O nome completo não pode ser vazio`,
+    'string.min': `O nome completo precisa ter no mínimo 5 dígitos`,
+    'any.required': `O campo nome completo é obrigatório`
   }), //tem que ter no min 5 caracteres
+  phone: Joi.string().min(9).required().messages({
+    'string.empty': `O telefone não pode ser vazio`,
+    'string.min': `O telefone precisa ter no mínimo 9 dígitos`,
+    'any.required': `O campo telefone é obrigatório`
+  }),
+  company: Joi.string().required().messages({
+    'string.empty': `A empresa não pode ser vazia`,
+    'any.required': `O campo empresa é obrigatório`
+  }),
+  position: Joi.string().required().messages({
+    'string.empty': `O cargo não pode ser vazio`,
+    'any.required': `O campo cargo é obrigatório`
+  }),
   email: Joi.string()
     .email({ tlds: { allow: false } })
     .required()
@@ -26,7 +39,10 @@ const fieldsValidations = {
   confirm_password: Joi.string()
     .valid(Joi.ref('password'))
     .required()
-    .messages({ 'any.only': 'As senhas precisam ser iguais' })
+    .messages({
+      'any.required': `confirmar a senha  é obrigatório`,
+      'any.only': 'As senhas precisam ser iguais'
+    })
 }
 
 export type FieldErrors = {

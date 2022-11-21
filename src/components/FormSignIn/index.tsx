@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { Email, Lock, ErrorOutline } from '@styled-icons/material-outlined'
 
-import { FormError, FormLink, FormLoading, FormWrapper } from 'components/Form'
+import { FormError, FormLoading, FormWrapper } from 'components/Form'
 import Button from 'components/Button'
 import TextField from 'components/TextField'
 
@@ -43,6 +43,13 @@ const FormSignIn = () => {
 
   return (
     <FormWrapper>
+      <S.Title>Boas-vindas</S.Title>
+      <S.Subtitle>
+        Não possui um cadastro?{' '}
+        <Link href="/sign-up" passHref>
+          <a>Faça o cadastro</a>
+        </Link>
+      </S.Subtitle>
       {!!formError && (
         <FormError>
           <ErrorOutline /> {formError}
@@ -71,13 +78,6 @@ const FormSignIn = () => {
         <Button type="submit" disabled={loading}>
           {loading ? <FormLoading /> : <span>Sign in now</span>}
         </Button>
-
-        <FormLink>
-          Don’t have an account?{' '}
-          <Link href="/sign-up">
-            <a>Sign up</a>
-          </Link>
-        </FormLink>
       </form>
     </FormWrapper>
   )
