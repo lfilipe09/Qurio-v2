@@ -45,7 +45,8 @@ export default {
     grayGradient:
       'linear-gradient(50deg, rgb(31 31 33) 0%, rgb(70 71 79) 100%)',
     blackMobileGradient:
-      'linear-gradient(252.47deg, #000000 6.48%, #5B5757 98.22%)'
+      'linear-gradient(252.47deg, #000000 6.48%, #5B5757 98.22%)',
+    whiteBackground: 'linear-gradient(125.65deg, #FFFFFF 37.1%, #D1D1D1 87.57%)'
   },
   spacings: {
     xxsmall: '0.8rem',

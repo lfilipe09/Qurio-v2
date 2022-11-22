@@ -11,7 +11,7 @@ export type ImageHalfProps = {
 
 export const Wrapper = styled.main`
   position: relative;
-  height: 31px;
+  height: 215px;
 `
 
 export const ImageFull = styled.div<ImageFullProps>`

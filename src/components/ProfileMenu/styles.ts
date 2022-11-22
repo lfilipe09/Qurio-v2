@@ -22,7 +22,7 @@ const linkModifiers = {
   `,
   active: (theme: DefaultTheme) => css`
     background: ${theme.colors.primary};
-    color: ${theme.colors.white};
+    color: ${theme.colors.black};
   `
 }
 
@@ -40,7 +40,7 @@ export const Link = styled.a<LinkProps>`
     transition: background, color, ${theme.transition.default};
     &:hover {
       background: ${theme.colors.primary};
-      color: ${theme.colors.white};
+      color: ${theme.colors.black};
     }
     > span {
       margin-left: ${theme.spacings.xsmall};
