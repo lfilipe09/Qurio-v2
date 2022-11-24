@@ -260,3 +260,11 @@ export const MenuIcon = styled.div`
     display: block !important;
   `}
 `
+
+export const Username = styled.a`
+  ${({ theme }) => css`
+    padding: 0 ${theme.spacings.xxsmall};
+    text-decoration: none;
+    color: ${theme.colors.black};
+  `}
+`

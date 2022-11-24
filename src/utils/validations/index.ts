@@ -4,7 +4,7 @@ import { UsersPermissionsRegisterInput } from 'types/api'
 const emailValidation = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 const fieldsValidations = {
-  fullName: Joi.string().min(5).required().messages({
+  username: Joi.string().min(5).required().messages({
     'string.empty': `O nome completo não pode ser vazio`,
     'string.min': `O nome completo precisa ter no mínimo 5 dígitos`,
     'any.required': `O campo nome completo é obrigatório`

@@ -16,16 +16,18 @@ import React, { useState } from 'react'
 import { FieldErrors, signUpValidate } from 'utils/validations'
 import * as S from './styles'
 import Dropdown from 'components/Dropdown'
+import client from 'graphql/client'
+import { CREATE_REGISTER, UPDATE_USER } from 'graphql/mutations/register'
 
 const FormSignUp = () => {
   const [formError, setFormError] = useState('')
   const [loading] = useState(false)
   const [fieldError, setFieldError] = useState<FieldErrors>({})
   const [values, setValues] = useState({
-    fullName: '',
+    username: '',
     phone: '',
     company: '',
-    position: '',
+    position: 'CEO/Presidente',
     email: '',
     password: ''
   })
@@ -41,12 +43,47 @@ const FormSignUp = () => {
 
     const errors = signUpValidate(values)
 
+    console.log('executei em cima')
+
+    console.log('errors', errors)
     if (Object.keys(errors).length) {
+      console.log('executei dentro')
       setFieldError(errors)
       return
     }
 
+    console.log('executei embaixo')
+
     setFieldError({})
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let data: any = {}
+
+    try {
+      data = await client.request(CREATE_REGISTER, {
+        input: {
+          username: values.username,
+          email: values.email,
+          password: values.password
+        }
+      })
+    } catch (err) {
+      console.log(err)
+    }
+
+    console.log(data)
+    try {
+      await client.request(UPDATE_USER, {
+        id: data?.register.user.id,
+        data: {
+          phone: values.phone,
+          company: values.company,
+          position: values.position
+        }
+      })
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
@@ -65,11 +102,11 @@ const FormSignUp = () => {
       )}
       <form onSubmit={handleSubmit}>
         <TextField
-          name="fullName"
+          name="name"
           placeholder="Nome completo"
           type="text"
-          error={fieldError?.fullName}
-          onInputChange={(v) => handleInput('fullName', v)}
+          error={fieldError?.username}
+          onInputChange={(v) => handleInput('username', v)}
           icon={<AccountCircle />}
         />
         <S.TextFieldSideBySide>
@@ -118,7 +155,7 @@ const FormSignUp = () => {
             'Outro'
           ]}
           initialValue={'CEO/Presidente'}
-          onDropdownChange={(v) => handleInput('profile', v)}
+          onDropdownChange={(v) => handleInput('position', v)}
         />
         <TextField
           name="password"

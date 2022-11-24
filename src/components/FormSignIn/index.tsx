@@ -9,12 +9,17 @@ import TextField from 'components/TextField'
 
 import * as S from './styles'
 import { FieldErrors, signInValidate } from 'utils/validations'
+import { signIn } from 'next-auth/client'
+import { useRouter } from 'next/router'
 
 const FormSignIn = () => {
   const [formError, setFormError] = useState('')
   const [fieldError, setFieldError] = useState<FieldErrors>({})
   const [values, setValues] = useState({ email: '', password: '' })
   const [loading, setLoading] = useState(false)
+
+  const routes = useRouter()
+  const { push, query } = routes
 
   const handleInput = (field: string, value: string) => {
     setValues((s) => ({ ...s, [field]: value }))
@@ -35,10 +40,23 @@ const FormSignIn = () => {
 
     setFieldError({})
 
+    // sign in
+    const result = await signIn('credentials', {
+      ...values,
+      redirect: false,
+      callbackUrl: `${window.location.origin}${query?.callbackUrl || ''}`
+    }) //window location origin fala o lugar que se encontra
+
+    console.log('result', result)
+
+    if (result?.url) {
+      return push(result?.url)
+    }
+
     setLoading(false)
 
     // jogar o erro
-    setFormError('username or password is invalid')
+    setFormError('E-mail ou senha estão incorretos!')
   }
 
   return (

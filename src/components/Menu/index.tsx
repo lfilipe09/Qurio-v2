@@ -5,6 +5,9 @@ import { Close as CloseIcon } from '@styled-icons/material-outlined/Close'
 import * as S from './styles'
 import Button from 'components/Button'
 import Link from 'next/link'
+import MediaMatch from 'components/MediaMatch'
+import { AccountCircle } from '@styled-icons/material-outlined'
+import { useSession } from 'next-auth/client'
 
 export type MenuProps = {
   description?: string
@@ -22,6 +25,7 @@ const Menu = ({
 }: MenuProps) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isAboutOpen, setIsAboutOpen] = useState(false)
+  const [session] = useSession()
 
   return (
     <S.Wrapper>
@@ -71,14 +75,32 @@ const Menu = ({
             </>
           ) : (
             <>
-              <S.MenuIcon>
-                <S.IconWrapper
-                  color={colorDesktop}
-                  onClick={() => setIsOpen(true)}
-                >
-                  <MenuIcon aria-label="Open Menu" color="black" />
-                </S.IconWrapper>
-              </S.MenuIcon>
+              <MediaMatch greaterThan="medium">
+                {!session?.user?.name ? (
+                  <Link href="/sign-in" passHref>
+                    <Button minimal as="a">
+                      Sign in
+                    </Button>
+                  </Link>
+                ) : (
+                  <>
+                    <AccountCircle size={24} />
+                    <Link href="/perfil/meus-dados" passHref>
+                      <S.Username>{session.user.name}</S.Username>
+                    </Link>
+                  </>
+                )}
+              </MediaMatch>
+              <MediaMatch lessThan="medium">
+                <S.MenuIcon>
+                  <S.IconWrapper
+                    color={colorDesktop}
+                    onClick={() => setIsOpen(true)}
+                  >
+                    <MenuIcon aria-label="Open Menu" color="black" />
+                  </S.IconWrapper>
+                </S.MenuIcon>
+              </MediaMatch>
             </>
           )}
         </div>
